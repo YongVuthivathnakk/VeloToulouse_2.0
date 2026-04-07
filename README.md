@@ -1,19 +1,48 @@
-# velotoulouse
+# Velotoulouse
 
-A new Flutter project.
+A bike sharing mobile application for Toulouse, France.
+
+## Project Overview
+
+- **Architecture**: MVVM with DTOs (Data Transfer Objects)
+- **State Management**: Provider
+- **Platform**: Flutter (Android)
+
+## Features
+
+- Station Map/List - Browse and search bike stations
+- Station Details - View station availability and info
+- Trip History - Track past rentals
+- Payment System - Manage payment methods
+- Rent Bike - Scan and rent bikes via QR code
+
+## Project Structure
+
+```
+lib/
+├── main_common.dart          # App entry point with providers
+├── data/
+│   ├── dtos/                 # Data transfer objects
+│   └── repositories/         # Data repositories
+├── model/                    # Domain models
+└── ui/
+    ├── screens/              # Screen widgets
+    ├── states/               # ViewModels (ChangeNotifier)
+    ├── themes/               # Theme configuration
+    ├── utils/                # Utilities
+    └── widget/               # Reusable widgets
+```
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+```bash
+flutter pub get
+flutter run
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Dependencies
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# VeloToulouse_2.0
-# VeloToulouse_2.0
+- provider: ^6.1.5+1
+- http: ^1.6.0
+- intl: ^0.20.2
+- uuid: ^4.5.3
