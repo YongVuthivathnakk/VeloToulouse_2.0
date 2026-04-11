@@ -1,0 +1,196 @@
+{
+  "stations": {
+    "station_01": {
+      "name": "Capitole",
+      "totalSlots": 10,
+      "occupiedSlots": {
+        "1": "bike_01",
+        "3": "bike_02",
+        "5": "bike_03"
+      },
+      "location": {
+        "id": "loc_01",
+        "name": "Place du Capitole",
+        "street": "Place du Capitole",
+        "lat": 43.6047,
+        "lng": 1.4442
+      }
+    },
+    "station_02": {
+      "name": "Saint-Sernin",
+      "totalSlots": 8,
+      "occupiedSlots": {
+        "2": "bike_04",
+        "4": "bike_05"
+      },
+      "location": {
+        "id": "loc_02",
+        "name": "Basilique Saint-Sernin",
+        "street": "Place Saint-Sernin",
+        "lat": 43.6084,
+        "lng": 1.4423
+      }
+    },
+    "station_03": {
+      "name": "Carmes",
+      "totalSlots": 12,
+      "occupiedSlots": {
+        "1": "bike_06",
+        "2": "bike_07",
+        "6": "bike_08",
+        "9": "bike_09"
+      },
+      "location": {
+        "id": "loc_03",
+        "name": "Place des Carmes",
+        "street": "Place des Carmes",
+        "lat": 43.5986,
+        "lng": 1.4456
+      }
+    },
+    "station_04": {
+      "name": "Wilson",
+      "totalSlots": 10,
+      "occupiedSlots": {
+        "3": "bike_10",
+        "7": "bike_11"
+      },
+      "location": {
+        "id": "loc_04",
+        "name": "Place Wilson",
+        "street": "Place Wilson",
+        "lat": 43.6071,
+        "lng": 1.4497
+      }
+    },
+    "station_05": {
+      "name": "Jeanne d'Arc",
+      "totalSlots": 8,
+      "occupiedSlots": {
+        "1": "bike_12",
+        "2": "bike_13",
+        "3": "bike_14",
+        "4": "bike_15"
+      },
+      "location": {
+        "id": "loc_05",
+        "name": "Place Jeanne d'Arc",
+        "street": "Place Jeanne d'Arc",
+        "lat": 43.6012,
+        "lng": 1.4501
+      }
+    },
+    "station_06": {
+      "name": "Esquirol",
+      "totalSlots": 15,
+      "occupiedSlots": {
+        "2": "bike_16",
+        "5": "bike_17",
+        "8": "bike_18",
+        "11": "bike_19",
+        "14": "bike_20"
+      },
+      "location": {
+        "id": "loc_06",
+        "name": "Place Esquirol",
+        "street": "Place Esquirol",
+        "lat": 43.6001,
+        "lng": 1.4431
+      }
+    },
+    "station_07": {
+      "name": "Matabiau",
+      "totalSlots": 12,
+      "occupiedSlots": {
+        "1": "bike_21",
+        "3": "bike_22"
+      },
+      "location": {
+        "id": "loc_07",
+        "name": "Gare Matabiau",
+        "street": "Boulevard Pierre Semard",
+        "lat": 43.6114,
+        "lng": 1.4536
+      }
+    },
+    "station_08": {
+      "name": "Compans Caffarelli",
+      "totalSlots": 10,
+      "occupiedSlots": {
+        "4": "bike_23",
+        "6": "bike_24",
+        "9": "bike_25"
+      },
+      "location": {
+        "id": "loc_08",
+        "name": "Compans Caffarelli",
+        "street": "Boulevard Lascrosses",
+        "lat": 43.6134,
+        "lng": 1.4387
+      }
+    },
+    "station_09": {
+      "name": "Saint-Cyprien",
+      "totalSlots": 8,
+      "occupiedSlots": {
+        "1": "bike_26",
+        "5": "bike_27"
+      },
+      "location": {
+        "id": "loc_09",
+        "name": "Place Saint-Cyprien",
+        "street": "Place Saint-Cyprien",
+        "lat": 43.5981,
+        "lng": 1.4298
+      }
+    },
+    "station_10": {
+      "name": "Patte d'Oie",
+      "totalSlots": 10,
+      "occupiedSlots": {
+        "2": "bike_28",
+        "3": "bike_29",
+        "7": "bike_30"
+      },
+      "location": {
+        "id": "loc_10",
+        "name": "Patte d'Oie",
+        "street": "Avenue de Muret",
+        "lat": 43.5921,
+        "lng": 1.4187
+      }
+    }
+  },
+  "bikes": {
+    "bike_01": { "stationId": "station_01", "availabilityStatus": true },
+    "bike_02": { "stationId": "station_01", "availabilityStatus": true },
+    "bike_03": { "stationId": "station_01", "availabilityStatus": true },
+    "bike_04": { "stationId": "station_02", "availabilityStatus": true },
+    "bike_05": { "stationId": "station_02", "availabilityStatus": true },
+    "bike_06": { "stationId": "station_03", "availabilityStatus": true },
+    "bike_07": { "stationId": "station_03", "availabilityStatus": true },
+    "bike_08": { "stationId": "station_03", "availabilityStatus": true },
+    "bike_09": { "stationId": "station_03", "availabilityStatus": true },
+    "bike_10": { "stationId": "station_04", "availabilityStatus": true },
+    "bike_11": { "stationId": "station_04", "availabilityStatus": true },
+    "bike_12": { "stationId": "station_05", "availabilityStatus": true },
+    "bike_13": { "stationId": "station_05", "availabilityStatus": true },
+    "bike_14": { "stationId": "station_05", "availabilityStatus": true },
+    "bike_15": { "stationId": "station_05", "availabilityStatus": true },
+    "bike_16": { "stationId": "station_06", "availabilityStatus": true },
+    "bike_17": { "stationId": "station_06", "availabilityStatus": true },
+    "bike_18": { "stationId": "station_06", "availabilityStatus": true },
+    "bike_19": { "stationId": "station_06", "availabilityStatus": true },
+    "bike_20": { "stationId": "station_06", "availabilityStatus": true },
+    "bike_21": { "stationId": "station_07", "availabilityStatus": true },
+    "bike_22": { "stationId": "station_07", "availabilityStatus": true },
+    "bike_23": { "stationId": "station_08", "availabilityStatus": true },
+    "bike_24": { "stationId": "station_08", "availabilityStatus": true },
+    "bike_25": { "stationId": "station_08", "availabilityStatus": true },
+    "bike_26": { "stationId": "station_09", "availabilityStatus": true },
+    "bike_27": { "stationId": "station_09", "availabilityStatus": true },
+    "bike_28": { "stationId": "station_10", "availabilityStatus": true },
+    "bike_29": { "stationId": "station_10", "availabilityStatus": true },
+    "bike_30": { "stationId": "station_10", "availabilityStatus": true }
+  }
+}

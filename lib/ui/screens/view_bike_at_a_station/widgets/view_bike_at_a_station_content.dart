@@ -33,7 +33,7 @@ class ViewBikeAtAStationContent extends StatelessWidget {
         ),
         title: Text("Station Information", style: AppText.h2),
       ),
-      body: Padding(
+      body: station == null ? const Center(child: CircularProgressIndicator()) : Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         child: Column(
           children: [
@@ -43,7 +43,7 @@ class ViewBikeAtAStationContent extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${station!.name} - ${station.locationPosition.name}',
+                    '${station.name} - ${station.locationPosition.name}',
                     style: AppText.h2,
                   ),
                   Text(station.locationPosition.street, style: AppText.h3),
