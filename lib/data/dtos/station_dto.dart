@@ -15,9 +15,19 @@ class StationDto {
       name: json[nameKey],
       totalSlots: json[totalSlotsKey],
       occupiedSlots: json[occupiedSlotsKey] != null
-          ? Map<String, String>.from(
-              json[occupiedSlotsKey],
-            ).map((key, value) => MapEntry(int.parse(key), value))
+          ? (json[occupiedSlotsKey] is Map
+                ? Map<String, String>.from(
+                    json[occupiedSlotsKey],
+                  ).map((key, value) => MapEntry(int.parse(key), value))
+                : (json[occupiedSlotsKey] as List)
+                      .asMap()
+                      .entries
+                      .where((e) => e.value != null)
+                      .map((e) => MapEntry(e.key, e.value.toString()))
+                      .fold<Map<int, String>>(
+                        {},
+                        (map, e) => map..[e.key] = e.value,
+                      ))
           : {},
       locationPosition: LocationDto.fromJson(json[locationKey]),
     );

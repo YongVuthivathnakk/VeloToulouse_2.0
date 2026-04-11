@@ -14,9 +14,21 @@ class StationState extends ChangeNotifier {
   List<Station> get stations => _stations;
   Station? get selectedStation => _selectedStation;
 
+  // Future<void> _init() async {
+  //   _stations = await stationRepository.getAllStation();
+  //   _selectedStation = _stations.isNotEmpty ? _stations.first : null; 
+  //   notifyListeners();
+  // }
   Future<void> _init() async {
-    _stations = await stationRepository.getAllStation();
-    _selectedStation = _stations.isNotEmpty ? _stations.first : null; 
+    print("Fetching stations...");
+    try {
+      _stations = await stationRepository.getAllStation();
+      print("Stations loaded: ${_stations.length}");
+      _selectedStation = _stations.isNotEmpty ? _stations.first : null;
+      print("Selected station: ${_selectedStation?.name}");
+    } catch (e) {
+      print("Error: $e");
+    }
     notifyListeners();
   }
 

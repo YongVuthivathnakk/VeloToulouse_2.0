@@ -1,7 +1,7 @@
 {
   "stations": {
     "station_01": {
-      "name": "Capitole",
+      "name": "Wat Phnom",
       "totalSlots": 10,
       "occupiedSlots": {
         "1": "bike_01",
@@ -10,14 +10,14 @@
       },
       "location": {
         "id": "loc_01",
-        "name": "Place du Capitole",
-        "street": "Place du Capitole",
-        "lat": 43.6047,
-        "lng": 1.4442
+        "name": "Wat Phnom Hill",
+        "street": "Vithei Preah Ang Yukanthor",
+        "lat": 11.5765,
+        "lng": 104.9214
       }
     },
     "station_02": {
-      "name": "Saint-Sernin",
+      "name": "Royal Palace",
       "totalSlots": 8,
       "occupiedSlots": {
         "2": "bike_04",
@@ -25,14 +25,14 @@
       },
       "location": {
         "id": "loc_02",
-        "name": "Basilique Saint-Sernin",
-        "street": "Place Saint-Sernin",
-        "lat": 43.6084,
-        "lng": 1.4423
+        "name": "Royal Palace Gate",
+        "street": "Samdach Sothearos Blvd",
+        "lat": 11.5645,
+        "lng": 104.9301
       }
     },
     "station_03": {
-      "name": "Carmes",
+      "name": "Central Market",
       "totalSlots": 12,
       "occupiedSlots": {
         "1": "bike_06",
@@ -42,14 +42,14 @@
       },
       "location": {
         "id": "loc_03",
-        "name": "Place des Carmes",
-        "street": "Place des Carmes",
-        "lat": 43.5986,
-        "lng": 1.4456
+        "name": "Phsar Thmei",
+        "street": "Kampuchea Krom Blvd",
+        "lat": 11.5694,
+        "lng": 104.9174
       }
     },
     "station_04": {
-      "name": "Wilson",
+      "name": "Independence Monument",
       "totalSlots": 10,
       "occupiedSlots": {
         "3": "bike_10",
@@ -57,14 +57,14 @@
       },
       "location": {
         "id": "loc_04",
-        "name": "Place Wilson",
-        "street": "Place Wilson",
-        "lat": 43.6071,
-        "lng": 1.4497
+        "name": "Vimean Ekareach",
+        "street": "Norodom Blvd",
+        "lat": 11.5572,
+        "lng": 104.9233
       }
     },
     "station_05": {
-      "name": "Jeanne d'Arc",
+      "name": "Russian Market",
       "totalSlots": 8,
       "occupiedSlots": {
         "1": "bike_12",
@@ -74,14 +74,14 @@
       },
       "location": {
         "id": "loc_05",
-        "name": "Place Jeanne d'Arc",
-        "street": "Place Jeanne d'Arc",
-        "lat": 43.6012,
-        "lng": 1.4501
+        "name": "Phsar Tuol Tom Poung",
+        "street": "Street 155",
+        "lat": 11.5447,
+        "lng": 104.9178
       }
     },
     "station_06": {
-      "name": "Esquirol",
+      "name": "BKK1",
       "totalSlots": 15,
       "occupiedSlots": {
         "2": "bike_16",
@@ -92,14 +92,14 @@
       },
       "location": {
         "id": "loc_06",
-        "name": "Place Esquirol",
-        "street": "Place Esquirol",
-        "lat": 43.6001,
-        "lng": 1.4431
+        "name": "Boeung Keng Kang",
+        "street": "Street 278",
+        "lat": 11.5538,
+        "lng": 104.9247
       }
     },
     "station_07": {
-      "name": "Matabiau",
+      "name": "Riverside",
       "totalSlots": 12,
       "occupiedSlots": {
         "1": "bike_21",
@@ -107,14 +107,14 @@
       },
       "location": {
         "id": "loc_07",
-        "name": "Gare Matabiau",
-        "street": "Boulevard Pierre Semard",
-        "lat": 43.6114,
-        "lng": 1.4536
+        "name": "Sisowath Quay",
+        "street": "Sisowath Quay",
+        "lat": 11.5676,
+        "lng": 104.9311
       }
     },
     "station_08": {
-      "name": "Compans Caffarelli",
+      "name": "Olympic Stadium",
       "totalSlots": 10,
       "occupiedSlots": {
         "4": "bike_23",
@@ -123,14 +123,14 @@
       },
       "location": {
         "id": "loc_08",
-        "name": "Compans Caffarelli",
-        "street": "Boulevard Lascrosses",
-        "lat": 43.6134,
-        "lng": 1.4387
+        "name": "National Olympic Stadium",
+        "street": "Sihanouk Blvd",
+        "lat": 11.5596,
+        "lng": 104.9121
       }
     },
     "station_09": {
-      "name": "Saint-Cyprien",
+      "name": "Toul Sleng",
       "totalSlots": 8,
       "occupiedSlots": {
         "1": "bike_26",
@@ -138,14 +138,14 @@
       },
       "location": {
         "id": "loc_09",
-        "name": "Place Saint-Cyprien",
-        "street": "Place Saint-Cyprien",
-        "lat": 43.5981,
-        "lng": 1.4298
+        "name": "Tuol Sleng Genocide Museum",
+        "street": "Street 113",
+        "lat": 11.5493,
+        "lng": 104.9171
       }
     },
     "station_10": {
-      "name": "Patte d'Oie",
+      "name": "Night Market",
       "totalSlots": 10,
       "occupiedSlots": {
         "2": "bike_28",
@@ -154,10 +154,10 @@
       },
       "location": {
         "id": "loc_10",
-        "name": "Patte d'Oie",
-        "street": "Avenue de Muret",
-        "lat": 43.5921,
-        "lng": 1.4187
+        "name": "Phnom Penh Night Market",
+        "street": "Sisowath Quay Street 108",
+        "lat": 11.5712,
+        "lng": 104.9298
       }
     }
   },
