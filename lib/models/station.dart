@@ -32,19 +32,6 @@ class Station {
 
   int get availableSlots => totalSlots - occupiedSlots.length;
 
-  void addBikeSlot(int slotNumber, String bikeId) {
-    if (slotNumber < 1 || slotNumber > totalSlots) {
-      print("Invalid slot number!");
-      return;
-    }
-    if (occupiedSlots.containsKey(slotNumber)) {
-      print("Slot $slotNumber is already occupied!");
-      return;
-    }
-    occupiedSlots[slotNumber] = bikeId;
-    print("Bike $bikeId parked at slot $slotNumber.");
-  }
-
   void removeBikeSlot(int slotNumber) {
     if (slotNumber < 1 || slotNumber > totalSlots) {
       print("Invalid slot number!");
@@ -57,7 +44,7 @@ class Station {
     print("Slot $slotNumber is now free.");
   }
 
-  List<int> getAvaliableSlot() {
+  List<int> getAvailableSlot() {
     List<int> availableSlots = [];
     for (int i = 1; i <= totalSlots; i++) {
       if (!occupiedSlots.containsKey(i)) {
