@@ -1,5 +1,5 @@
 class Bike {
-  String id;
+  final String id;
   String stationId;
   bool availabilityStatus;
 
@@ -9,5 +9,14 @@ class Bike {
     this.availabilityStatus = true,
   });
 
-  
+  Bike copyWith({
+    String? stationId, 
+    bool? availabilityStatus
+    }){
+    return Bike(
+      id: id,
+      stationId: stationId ?? this.stationId,
+      availabilityStatus: availabilityStatus ?? this.availabilityStatus,
+    );
+  }
 }

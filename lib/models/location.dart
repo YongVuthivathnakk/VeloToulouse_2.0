@@ -1,7 +1,7 @@
 import 'package:latlng/latlng.dart';
 
 class Location {
-  String id;
+  final String id;
   String name;
   String street;
   LatLng locationPosition;
@@ -12,4 +12,16 @@ class Location {
     required this.street,
     required this.locationPosition,
   });
+
+  Location copyWith({
+    String? name, 
+    String? street, 
+    LatLng? locationPosition,
+  }){
+    return Location(
+      id: id,
+      name: name ?? this.name, 
+      street: street ?? this.street, 
+      locationPosition: locationPosition ?? this.locationPosition);
+  }
 }

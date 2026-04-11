@@ -1,18 +1,34 @@
 import 'package:velotoulouse/models/location.dart';
 
 class Station {
-  String id;
-  String name;
-  int totalSlots;
-  Map<int, String> occupiedSlots = {};
-  Location locationPosition;
+  final String id;
+  final String name;
+  final int totalSlots;
+  final Map<int, String> occupiedSlots;
+  final Location locationPosition;
 
   Station({
     required this.id,
     required this.name,
     required this.totalSlots,
     required this.locationPosition,
-  });
+    Map<int, String>? occupiedSlots,
+  }) : occupiedSlots = occupiedSlots ?? {} ;
+
+    Station copyWith({
+    String? name,
+    int? totalSlots,
+    Map<int, String>? occupiedSlots,
+    Location? locationPosition,
+  }) {
+    return Station(
+      id: id,
+      name: name ?? this.name,
+      totalSlots: totalSlots ?? this.totalSlots,
+      occupiedSlots: occupiedSlots ?? this.occupiedSlots,
+      locationPosition: locationPosition ?? this.locationPosition,
+    );
+  }
 
   int get availableSlots => totalSlots - occupiedSlots.length;
 
