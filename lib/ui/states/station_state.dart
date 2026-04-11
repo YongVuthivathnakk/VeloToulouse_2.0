@@ -16,6 +16,7 @@ class StationState extends ChangeNotifier {
 
   Future<void> _init() async {
     _stations = await stationRepository.getAllStation();
+    _selectedStation = _stations.isNotEmpty ? _stations.first : null; 
     notifyListeners();
   }
 

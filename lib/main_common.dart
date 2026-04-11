@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:velotoulouse/ui/screens/view_bike_at_a_station/view_bike_at_a_station_screen.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
 
 ///
@@ -24,8 +25,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(body: Center(child: Text("Hello G1 the best! - Ronan", style: TextStyle(color: AppColors.primary),))),
-    );
+    return ViewBikeAtAStationScreen();
   }
 }

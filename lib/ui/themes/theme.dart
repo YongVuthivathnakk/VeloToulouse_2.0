@@ -11,13 +11,13 @@ class AppColors {
   AppColors._();
 
   // Brand
-  static const Color primary = Color(0xFF84B179);
-  static const Color primaryDark = Color(0xFF6A9460);
-  static const Color primaryLight = Color(0xFFD4E8D1);
+  static const Color primary = Color(0xFFA2CB8B);
+  static const Color primaryDark = Color(0xFF84B179);
+  static const Color primaryLight = Color(0xFFC7EABB);
 
-  static const Color secondary = Color(0xFFFFB38A);
-  static const Color secondaryDark = Color(0xFFE8955E);
-  static const Color secondaryLight = Color(0xFFFFE8D8);
+  static const Color secondary = Color(0xFFFFD6B8);
+  static const Color secondaryDark = Color(0xFFFFB38A);
+  static const Color secondaryLight = Color(0xFFFFF1E6);
 
   // Semantic
   static const Color error = Color(0xFFE05252);
@@ -26,10 +26,11 @@ class AppColors {
   static const Color info = Color(0xFF5B9BD5);
 
   // Neutral
-  static const Color grey900 = Color(0xFF1A1C19);
-  static const Color grey500 = Color(0xFF6B7066);
-  static const Color grey300 = Color(0xFFCDD4C8);
-  static const Color grey50 = Color(0xFFF4F6F3);
+  static const Color grey900 = Color(0xFF1C1C1E);
+  static const Color grey500 = Color(0xFF8E8E93);
+  static const Color grey300 = Color(0xFFC7C7CC);
+  static const Color grey50 = Color(0xFFF2F2F7);
+  static const Color white = Color(0xFFFFFFFF);
 }
 
 class AppText {
@@ -42,6 +43,10 @@ class AppText {
   static const TextStyle h2 = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w700,
+  );
+  static const TextStyle h3 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
   );
   static const TextStyle body = TextStyle(
     fontSize: 14,
@@ -66,7 +71,11 @@ class AppText {
 class AppRadius {
   AppRadius._();
   static const double md = 10;
+  static const double large = 20;
   static const BorderRadius mdR = BorderRadius.all(Radius.circular(md));
+  static const BorderRadius largeRadius = BorderRadius.all(
+    Radius.circular(large),
+  );
 }
 
 ThemeData get lightTheme => ThemeData(

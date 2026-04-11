@@ -11,10 +11,14 @@ class MockData {
       totalSlots: 10,
       locationPosition: Location(
         id: "loc_01",
-        name: "Central Park",
+        name: "West Gate",
         street: "123 Main St",
         locationPosition: LatLng.degree(43.6008, 1.4423),
       ),
+      occupiedSlots: {
+        1: "bike_01", 
+        3: "bike_02",
+      }
     ),
     Station(
       id: "station_02",
