@@ -1,0 +1,14 @@
+name: Telegram Notify
+
+on: [push]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Telegram message
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.BOT_TOKEN }}/sendMessage \
+            -d chat_id=${{ secrets.CHAT_ID }} \
+            -d parse_mode=Markdown \
+            -d text="🚴 *New push to Vélo Toulouse*%0A👤 *Who:* ${{ github.actor }}%0A🌿 *Branch:* \`${{ github.ref_name }}\`%0A💬 *Commit:* ${{ github.event.head_commit.message }}"
