@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:velotoulouse/data/repository/station_repository.dart';
+import 'package:velotoulouse/data/repository/station_repository/station_repository.dart';
 import 'package:velotoulouse/models/station.dart';
 
 class StationState extends ChangeNotifier {
@@ -14,11 +14,6 @@ class StationState extends ChangeNotifier {
   List<Station> get stations => _stations;
   Station? get selectedStation => _selectedStation;
 
-  // Future<void> _init() async {
-  //   _stations = await stationRepository.getAllStation();
-  //   _selectedStation = _stations.isNotEmpty ? _stations.first : null; 
-  //   notifyListeners();
-  // }
   Future<void> _init() async {
     print("Fetching stations...");
     try {

@@ -24,9 +24,7 @@ class User {
     return User(
       id: id,
       name: name ?? this.name,
-      userSubscription: clearSubscription
-          ? null
-          : userSubscription ?? this.userSubscription,
+      userSubscription: clearSubscription ? null : userSubscription ?? this.userSubscription,
       bookedBike: clearBooking ? null : bookedBike ?? this.bookedBike,
     );
   }

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:velotoulouse/data/dtos/station_dto.dart';
-import 'package:velotoulouse/data/repository/station_repository.dart';
+import 'package:velotoulouse/data/repository/station_repository/station_repository.dart';
 import 'package:velotoulouse/models/station.dart';
 import 'package:http/http.dart' as http;
 
@@ -40,5 +40,11 @@ class StationRepositoryFirebase extends StationRepository {
     } catch (e) {
       throw Exception("Error fetching station: $e");
     }
+  }
+  
+  @override
+  Future<Station?> getStationBySlotId(String slotId) {
+    // TODO: implement getStationBySlotId
+    throw UnimplementedError();
   }
 }
