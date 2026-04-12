@@ -18,7 +18,7 @@ class LocationDto {
       id: json[idKey],
       name: json[nameKey],
       street: json[streetKey],
-      locationPosition: LatLng.degree(json[latKey], json[lngKey]),
+      coords: LatLng.degree(json[latKey], json[lngKey]),
     );
   }
 
@@ -27,8 +27,8 @@ class LocationDto {
       idKey: location.id,
       nameKey: location.name,
       streetKey: location.street,
-      latKey: location.locationPosition.latitude.degrees,
-      lngKey: location.locationPosition.longitude.degrees,
+      latKey: location.coords.latitude.degrees,
+      lngKey: location.coords.longitude.degrees,
     };
   }
 }
