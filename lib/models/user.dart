@@ -24,8 +24,17 @@ class User {
     return User(
       id: id,
       name: name ?? this.name,
-      userSubscription: clearSubscription ? null : userSubscription ?? this.userSubscription,
+      userSubscription: clearSubscription
+          ? null
+          : userSubscription ?? this.userSubscription,
       bookedBike: clearBooking ? null : bookedBike ?? this.bookedBike,
     );
   }
+
+  bool get hasValidSubscription =>
+      userSubscription != null && !userSubscription!.isExpired;
+
+  bool get hasActiveBooking => bookedBike != null;
+
+  bool get canBook => hasValidSubscription && !hasActiveBooking;
 }

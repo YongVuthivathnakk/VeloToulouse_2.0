@@ -18,7 +18,6 @@ class ViewBikeAtAStationViewModel extends ChangeNotifier {
     // _init();
   }
 
-  AsyncValue<List<Bike>> bikeValue = AsyncValue.loading();
 
   // void _init() async {
   //   loadBike();

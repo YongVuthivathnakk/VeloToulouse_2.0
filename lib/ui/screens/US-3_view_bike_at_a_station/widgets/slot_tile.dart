@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:velotoulouse/ui/screens/view_bike_at_a_station/widgets/status_badge.dart';
+import 'package:velotoulouse/ui/screens/US-3_view_bike_at_a_station/widgets/status_badge.dart';
 import 'package:velotoulouse/ui/themes/theme.dart'; 
 class SlotTile extends StatelessWidget {
   final int slotNumber;

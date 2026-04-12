@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:velotoulouse/ui/screens/view_bike_at_a_station/view_model/view_bike_at_a_station_view_model.dart';
-import 'package:velotoulouse/ui/screens/view_bike_at_a_station/widgets/slot_tile.dart';
-import 'package:velotoulouse/ui/screens/view_bike_at_a_station/widgets/status_badge.dart';
+import 'package:velotoulouse/ui/screens/US-3_view_bike_at_a_station/view_model/view_bike_at_a_station_view_model.dart';
+import 'package:velotoulouse/ui/screens/US-3_view_bike_at_a_station/widgets/slot_tile.dart';
+import 'package:velotoulouse/ui/screens/US-3_view_bike_at_a_station/widgets/status_badge.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
 
 class ViewBikeAtAStationContent extends StatelessWidget {

@@ -5,8 +5,7 @@ import 'package:velotoulouse/models/user.dart';
 class UserRepositoryMock implements UserRepository {
   User _user = MockData.user;
   @override
-  Future<User?> getUser(String id) async {
-    if (_user.id != id) return null;
+  Future<User?> getUser() async {
     return _user;
   }
 
