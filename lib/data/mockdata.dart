@@ -1,6 +1,7 @@
 import 'package:latlng/latlng.dart';
 import 'package:velotoulouse/models/bike.dart';
 import 'package:velotoulouse/models/location.dart';
+import 'package:velotoulouse/models/pass.dart';
 import 'package:velotoulouse/models/station.dart';
 
 class MockData {
@@ -15,10 +16,7 @@ class MockData {
         street: "123 Main St",
         locationPosition: LatLng.degree(43.6008, 1.4423),
       ),
-      occupiedSlots: {
-        1: "bike_01", 
-        3: "bike_02",
-      }
+      occupiedSlots: {1: "bike_01", 3: "bike_02"},
     ),
     Station(
       id: "station_02",
@@ -38,4 +36,6 @@ class MockData {
     Bike(id: "bike_02", stationId: "station_01"),
     Bike(id: "bike_03", stationId: "station_02"),
   ];
+
+  static List<Pass> passes = [];
 }
