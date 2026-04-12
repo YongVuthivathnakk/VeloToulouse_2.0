@@ -4,11 +4,6 @@ import 'package:velotoulouse/models/bike.dart';
 
 class BikeRepositoryMock implements BikeRepository {
   @override
-  Future<List<Bike>> getAllBikeFromAStation(String stationId) async {
-    return MockData.bikes.where((bike) => bike.stationId == stationId).toList();
-  }
-
-  @override
   Future<Bike?> getBike(String id) async {
     try {
       return MockData.bikes.firstWhere((bike) => bike.id == id);

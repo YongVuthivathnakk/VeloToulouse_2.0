@@ -2,195 +2,194 @@
   "stations": {
     "station_01": {
       "name": "Wat Phnom",
-      "totalSlots": 10,
-      "occupiedSlots": {
-        "1": "bike_01",
-        "3": "bike_02",
-        "5": "bike_03"
-      },
       "location": {
         "id": "loc_01",
         "name": "Wat Phnom Hill",
         "street": "Vithei Preah Ang Yukanthor",
         "lat": 11.5765,
         "lng": 104.9214
+      },
+      "slots": {
+        "slot_01": { "slotNumber": 1, "bikeId": "bike_01" },
+        "slot_02": { "slotNumber": 2, "bikeId": "bike_02" },
+        "slot_03": { "slotNumber": 3, "bikeId": null },
+        "slot_04": { "slotNumber": 4, "bikeId": null },
+        "slot_05": { "slotNumber": 5, "bikeId": null }
       }
     },
     "station_02": {
       "name": "Royal Palace",
-      "totalSlots": 8,
-      "occupiedSlots": {
-        "2": "bike_04",
-        "4": "bike_05"
-      },
       "location": {
         "id": "loc_02",
         "name": "Royal Palace Gate",
         "street": "Samdach Sothearos Blvd",
         "lat": 11.5645,
         "lng": 104.9301
+      },
+      "slots": {
+        "slot_06": { "slotNumber": 1, "bikeId": "bike_03" },
+        "slot_07": { "slotNumber": 2, "bikeId": null },
+        "slot_08": { "slotNumber": 3, "bikeId": null },
+        "slot_09": { "slotNumber": 4, "bikeId": "bike_04" },
+        "slot_10": { "slotNumber": 5, "bikeId": null }
       }
     },
     "station_03": {
-      "name": "Central Market",
-      "totalSlots": 12,
-      "occupiedSlots": {
-        "1": "bike_06",
-        "2": "bike_07",
-        "6": "bike_08",
-        "9": "bike_09"
-      },
+      "name": "Phsar Thmei",
       "location": {
         "id": "loc_03",
-        "name": "Phsar Thmei",
+        "name": "Central Market",
         "street": "Kampuchea Krom Blvd",
         "lat": 11.5694,
         "lng": 104.9174
+      },
+      "slots": {
+        "slot_11": { "slotNumber": 1, "bikeId": null },
+        "slot_12": { "slotNumber": 2, "bikeId": "bike_05" },
+        "slot_13": { "slotNumber": 3, "bikeId": null },
+        "slot_14": { "slotNumber": 4, "bikeId": null },
+        "slot_15": { "slotNumber": 5, "bikeId": null }
       }
     },
     "station_04": {
-      "name": "Independence Monument",
-      "totalSlots": 10,
-      "occupiedSlots": {
-        "3": "bike_10",
-        "7": "bike_11"
-      },
+      "name": "Vimean Ekareach",
       "location": {
         "id": "loc_04",
-        "name": "Vimean Ekareach",
+        "name": "Independence Monument",
         "street": "Norodom Blvd",
         "lat": 11.5572,
         "lng": 104.9233
+      },
+      "slots": {
+        "slot_16": { "slotNumber": 1, "bikeId": "bike_06" },
+        "slot_17": { "slotNumber": 2, "bikeId": null },
+        "slot_18": { "slotNumber": 3, "bikeId": "bike_07" },
+        "slot_19": { "slotNumber": 4, "bikeId": null },
+        "slot_20": { "slotNumber": 5, "bikeId": null }
       }
     },
     "station_05": {
-      "name": "Russian Market",
-      "totalSlots": 8,
-      "occupiedSlots": {
-        "1": "bike_12",
-        "2": "bike_13",
-        "3": "bike_14",
-        "4": "bike_15"
-      },
+      "name": "Phsar Tuol Tom Poung",
       "location": {
         "id": "loc_05",
-        "name": "Phsar Tuol Tom Poung",
+        "name": "Russian Market",
         "street": "Street 155",
         "lat": 11.5447,
         "lng": 104.9178
+      },
+      "slots": {
+        "slot_21": { "slotNumber": 1, "bikeId": "bike_08" },
+        "slot_22": { "slotNumber": 2, "bikeId": "bike_09" },
+        "slot_23": { "slotNumber": 3, "bikeId": null },
+        "slot_24": { "slotNumber": 4, "bikeId": null },
+        "slot_25": { "slotNumber": 5, "bikeId": null }
       }
     },
     "station_06": {
-      "name": "BKK1",
-      "totalSlots": 15,
-      "occupiedSlots": {
-        "2": "bike_16",
-        "5": "bike_17",
-        "8": "bike_18",
-        "11": "bike_19",
-        "14": "bike_20"
-      },
+      "name": "Boeung Keng Kang",
       "location": {
         "id": "loc_06",
-        "name": "Boeung Keng Kang",
+        "name": "BKK1",
         "street": "Street 278",
         "lat": 11.5538,
         "lng": 104.9247
+      },
+      "slots": {
+        "slot_26": { "slotNumber": 1, "bikeId": null },
+        "slot_27": { "slotNumber": 2, "bikeId": "bike_10" },
+        "slot_28": { "slotNumber": 3, "bikeId": null },
+        "slot_29": { "slotNumber": 4, "bikeId": "bike_11" },
+        "slot_30": { "slotNumber": 5, "bikeId": null }
       }
     },
     "station_07": {
-      "name": "Riverside",
-      "totalSlots": 12,
-      "occupiedSlots": {
-        "1": "bike_21",
-        "3": "bike_22"
-      },
+      "name": "Sisowath Quay",
       "location": {
         "id": "loc_07",
-        "name": "Sisowath Quay",
+        "name": "Riverside",
         "street": "Sisowath Quay",
         "lat": 11.5676,
         "lng": 104.9311
+      },
+      "slots": {
+        "slot_31": { "slotNumber": 1, "bikeId": "bike_12" },
+        "slot_32": { "slotNumber": 2, "bikeId": null },
+        "slot_33": { "slotNumber": 3, "bikeId": null },
+        "slot_34": { "slotNumber": 4, "bikeId": null },
+        "slot_35": { "slotNumber": 5, "bikeId": "bike_13" }
       }
     },
     "station_08": {
       "name": "Olympic Stadium",
-      "totalSlots": 10,
-      "occupiedSlots": {
-        "4": "bike_23",
-        "6": "bike_24",
-        "9": "bike_25"
-      },
       "location": {
         "id": "loc_08",
         "name": "National Olympic Stadium",
         "street": "Sihanouk Blvd",
         "lat": 11.5596,
         "lng": 104.9121
+      },
+      "slots": {
+        "slot_36": { "slotNumber": 1, "bikeId": null },
+        "slot_37": { "slotNumber": 2, "bikeId": "bike_14" },
+        "slot_38": { "slotNumber": 3, "bikeId": null },
+        "slot_39": { "slotNumber": 4, "bikeId": null },
+        "slot_40": { "slotNumber": 5, "bikeId": "bike_15" }
       }
     },
     "station_09": {
-      "name": "Toul Sleng",
-      "totalSlots": 8,
-      "occupiedSlots": {
-        "1": "bike_26",
-        "5": "bike_27"
-      },
+      "name": "Tuol Sleng",
       "location": {
         "id": "loc_09",
-        "name": "Tuol Sleng Genocide Museum",
+        "name": "Tuol Sleng Museum",
         "street": "Street 113",
         "lat": 11.5493,
         "lng": 104.9171
+      },
+      "slots": {
+        "slot_41": { "slotNumber": 1, "bikeId": "bike_16" },
+        "slot_42": { "slotNumber": 2, "bikeId": null },
+        "slot_43": { "slotNumber": 3, "bikeId": null },
+        "slot_44": { "slotNumber": 4, "bikeId": "bike_17" },
+        "slot_45": { "slotNumber": 5, "bikeId": null }
       }
     },
     "station_10": {
-      "name": "Night Market",
-      "totalSlots": 10,
-      "occupiedSlots": {
-        "2": "bike_28",
-        "3": "bike_29",
-        "7": "bike_30"
-      },
+      "name": "Phnom Penh Night Market",
       "location": {
         "id": "loc_10",
-        "name": "Phnom Penh Night Market",
+        "name": "Night Market",
         "street": "Sisowath Quay Street 108",
         "lat": 11.5712,
         "lng": 104.9298
+      },
+      "slots": {
+        "slot_46": { "slotNumber": 1, "bikeId": null },
+        "slot_47": { "slotNumber": 2, "bikeId": "bike_18" },
+        "slot_48": { "slotNumber": 3, "bikeId": null },
+        "slot_49": { "slotNumber": 4, "bikeId": null },
+        "slot_50": { "slotNumber": 5, "bikeId": "bike_19" }
       }
     }
   },
   "bikes": {
-    "bike_01": { "stationId": "station_01", "availabilityStatus": true },
-    "bike_02": { "stationId": "station_01", "availabilityStatus": true },
-    "bike_03": { "stationId": "station_01", "availabilityStatus": true },
-    "bike_04": { "stationId": "station_02", "availabilityStatus": true },
-    "bike_05": { "stationId": "station_02", "availabilityStatus": true },
-    "bike_06": { "stationId": "station_03", "availabilityStatus": true },
-    "bike_07": { "stationId": "station_03", "availabilityStatus": true },
-    "bike_08": { "stationId": "station_03", "availabilityStatus": true },
-    "bike_09": { "stationId": "station_03", "availabilityStatus": true },
-    "bike_10": { "stationId": "station_04", "availabilityStatus": true },
-    "bike_11": { "stationId": "station_04", "availabilityStatus": true },
-    "bike_12": { "stationId": "station_05", "availabilityStatus": true },
-    "bike_13": { "stationId": "station_05", "availabilityStatus": true },
-    "bike_14": { "stationId": "station_05", "availabilityStatus": true },
-    "bike_15": { "stationId": "station_05", "availabilityStatus": true },
-    "bike_16": { "stationId": "station_06", "availabilityStatus": true },
-    "bike_17": { "stationId": "station_06", "availabilityStatus": true },
-    "bike_18": { "stationId": "station_06", "availabilityStatus": true },
-    "bike_19": { "stationId": "station_06", "availabilityStatus": true },
-    "bike_20": { "stationId": "station_06", "availabilityStatus": true },
-    "bike_21": { "stationId": "station_07", "availabilityStatus": true },
-    "bike_22": { "stationId": "station_07", "availabilityStatus": true },
-    "bike_23": { "stationId": "station_08", "availabilityStatus": true },
-    "bike_24": { "stationId": "station_08", "availabilityStatus": true },
-    "bike_25": { "stationId": "station_08", "availabilityStatus": true },
-    "bike_26": { "stationId": "station_09", "availabilityStatus": true },
-    "bike_27": { "stationId": "station_09", "availabilityStatus": true },
-    "bike_28": { "stationId": "station_10", "availabilityStatus": true },
-    "bike_29": { "stationId": "station_10", "availabilityStatus": true },
-    "bike_30": { "stationId": "station_10", "availabilityStatus": true }
+    "bike_01": { "isAvailable": true },
+    "bike_02": { "isAvailable": true },
+    "bike_03": { "isAvailable": true },
+    "bike_04": { "isAvailable": true },
+    "bike_05": { "isAvailable": true },
+    "bike_06": { "isAvailable": true },
+    "bike_07": { "isAvailable": true },
+    "bike_08": { "isAvailable": true },
+    "bike_09": { "isAvailable": true },
+    "bike_10": { "isAvailable": true },
+    "bike_11": { "isAvailable": true },
+    "bike_12": { "isAvailable": true },
+    "bike_13": { "isAvailable": true },
+    "bike_14": { "isAvailable": true },
+    "bike_15": { "isAvailable": true },
+    "bike_16": { "isAvailable": true },
+    "bike_17": { "isAvailable": true },
+    "bike_18": { "isAvailable": true },
+    "bike_19": { "isAvailable": true }
   }
 }

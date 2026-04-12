@@ -8,24 +8,6 @@ import 'package:http/http.dart' as http;
 class BikeRepositoryFirebase implements BikeRepository {
   static const _baseUrl =
       'velo-toulouse-ab88a-default-rtdb.asia-southeast1.firebasedatabase.app';
-  @override
-  Future<List<Bike>> getAllBikeFromAStation(String stationId) async {
-    final uri = Uri.https(_baseUrl, 'bikes.json');
-    try {
-      final http.Response response = await http.get(uri);
-      if (response.statusCode == 200) {
-        if (response.body == 'null') return [];
-        Map<String, dynamic> bikeJson = jsonDecode(response.body);
-        return bikeJson.entries
-            .where((bike) => bike.value['stationId'] == stationId)
-            .map((bike) => BikeDto.fromJson(bike.key, bike.value))
-            .toList();
-      }
-      throw Exception("Failed to load bikes: ${response.statusCode}");
-    } catch (e) {
-      throw Exception("Error fetching bikes: $e");
-    }
-  }
 
   @override
   Future<Bike?> getBike(String id) async {

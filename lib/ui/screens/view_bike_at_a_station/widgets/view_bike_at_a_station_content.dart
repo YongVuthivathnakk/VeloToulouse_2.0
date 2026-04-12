@@ -14,12 +14,14 @@ class ViewBikeAtAStationContent extends StatelessWidget {
     final station = vm.stationState.selectedStation;
 
     List<Widget> buildSlotTile() {
-      List<Widget> slotTile = [];
-      for (int i = 1; i <= station!.totalSlots; i++) {
-        final isOccupied = station.occupiedSlots.containsKey(i);
-        slotTile.add(SlotTile(slotNumber: i, isOccupied: isOccupied));
-      }
-      return slotTile;
+      return vm.allSlots
+          .map(
+            (slot) => SlotTile(
+              slotNumber: slot.slotNumber,
+              isOccupied: slot.isOccupied,
+            ),
+          )
+          .toList();
     }
 
     return Scaffold(
@@ -33,49 +35,55 @@ class ViewBikeAtAStationContent extends StatelessWidget {
         ),
         title: Text("Station Information", style: AppText.h2),
       ),
-      body: station == null ? const Center(child: CircularProgressIndicator()) : Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        child: Column(
-          children: [
-            Container(
+      body: station == null
+          ? const Center(child: CircularProgressIndicator())
+          : Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    '${station.name} - ${station.locationPosition.name}',
-                    style: AppText.h2,
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${station.name} - ${station.location.name}',
+                          style: AppText.h2,
+                        ),
+                        Text(
+                          station.location.street,
+                          style: AppText.h3,
+                        ),
+                        Row(
+                          children: [
+                            StatusBadge(
+                              label: 'Available',
+                              dotIndicator: true,
+                              number: station.occupiedSlots.length,
+                              backgroundColor: AppColors.primaryLight,
+                              textColor: AppColors.primaryDark,
+                            ),
+                            SizedBox(width: 15),
+                            StatusBadge(
+                              label: 'Empty',
+                              dotIndicator: true,
+                              number: station.availableSlots,
+                              backgroundColor: AppColors.grey50,
+                              textColor: AppColors.grey500,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  Text(station.locationPosition.street, style: AppText.h3),
-                  Row(
-                    children: [
-                      StatusBadge(
-                        label: 'Available',
-                        dotIndicator: true,
-                        number: station.occupiedSlots.length,
-                        backgroundColor: AppColors.primaryLight,
-                        textColor: AppColors.primaryDark,
-                      ),
-                      SizedBox(width: 15),
-                      StatusBadge(
-                        label: 'Empty',
-                        dotIndicator: true,
-                        number: station.availableSlots,
-                        backgroundColor: AppColors.grey50,
-                        textColor: AppColors.grey500,
-                      ),
-                    ],
-                  ),
+                  Divider(),
+                  Expanded(child: ListView(children: buildSlotTile())),
                 ],
               ),
             ),
-            Divider(),
-            Expanded(child: ListView(
-              children: buildSlotTile(),
-            ))
-          ],
-        ),
-      ),
     );
   }
 }
