@@ -1,4 +1,12 @@
 enum Pass {
+  ticket(
+    title: "One Time Ticket",
+    subtitle: "",
+    price: 1.00,
+    description: 'For onetime use only.',
+    features: [],
+    footerNote: "",
+  ),
   daily(
     title: 'Daily',
     subtitle: '1-day ticket',
@@ -67,6 +75,8 @@ enum Pass {
 
   String get priceSuffix {
     switch (this) {
+      case Pass.ticket:
+        return '/ use';
       case Pass.daily:
         return '/ day';
       case Pass.monthly:
@@ -78,6 +88,8 @@ enum Pass {
 
   Duration get validFor {
     switch (this) {
+      case Pass.ticket:
+        return const Duration(days: 1);
       case Pass.daily:
         return const Duration(days: 1);
       case Pass.monthly:

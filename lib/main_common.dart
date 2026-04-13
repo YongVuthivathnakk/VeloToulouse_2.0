@@ -12,8 +12,8 @@ void mainCommon(List<InheritedProvider> providers) {
     MultiProvider(
       providers: providers,
       child: MaterialApp(debugShowCheckedModeBanner: false,
-
-       home: MyApp()),
+      theme: lightTheme,  
+      home: MyApp()),
     ),
   );
 }
