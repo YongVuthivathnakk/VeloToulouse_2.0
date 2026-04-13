@@ -1,5 +1,5 @@
 import 'package:velotoulouse/data/mockdata.dart';
-import 'package:velotoulouse/data/repository/bike_repository.dart';
+import 'package:velotoulouse/data/repository/bike/bike_repository.dart';
 import 'package:velotoulouse/models/bike.dart';
 
 class BikeRepositoryMock implements BikeRepository {

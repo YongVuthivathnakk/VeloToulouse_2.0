@@ -1,8 +1,10 @@
-import 'package:latlng/latlng.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:velotoulouse/models/booking.dart';
 import 'package:velotoulouse/models/location.dart';
 import 'package:velotoulouse/models/slot.dart';
 import 'package:velotoulouse/models/station.dart';
 import 'package:velotoulouse/models/bike.dart';
+import 'package:velotoulouse/models/user.dart';
 
 class MockData {
   static List<Bike> bikes = [
@@ -21,7 +23,7 @@ class MockData {
         id: "loc_01",
         name: "Wat Phnom Hill",
         street: "Vithei Preah Ang Yukanthor",
-        coords: LatLng.degree(11.5765, 104.9214),
+        coords: LatLng(11.5765, 104.9214),
       ),
       slots: [
         Slot(id: "slot_01", slotNumber: 1, bikeId: "bike_01"),
@@ -38,7 +40,7 @@ class MockData {
         id: "loc_02",
         name: "Royal Palace Gate",
         street: "Samdach Sothearos Blvd",
-        coords: LatLng.degree(11.5645, 104.9301),
+        coords: LatLng(11.5645, 104.9301),
       ),
       slots: [
         Slot(id: "slot_06", slotNumber: 1, bikeId: "bike_03"),
@@ -55,7 +57,7 @@ class MockData {
         id: "loc_03",
         name: "Phsar Thmei",
         street: "Kampuchea Krom Blvd",
-        coords: LatLng.degree(11.5694, 104.9174),
+        coords: LatLng(11.5694, 104.9174),
       ),
       slots: [
         Slot(id: "slot_11", slotNumber: 1, bikeId: null),
@@ -64,6 +66,38 @@ class MockData {
         Slot(id: "slot_14", slotNumber: 4, bikeId: null),
         Slot(id: "slot_15", slotNumber: 5, bikeId: null),
       ],
+    ),
+  ];
+
+  static List<Booking> bookings = [
+    Booking(
+      id: "booking_01",
+      bookingTime: DateTime.now(),
+      bookingStatus: BookingStatus.active,
+      bookingType: BookingType.ticket,
+      slotId: "slot_01",
+    ),
+    Booking(
+      id: "booking_02",
+      bookingTime: DateTime.now().subtract(Duration(minutes: 30)),
+      bookingStatus: BookingStatus.completed,
+      bookingType: BookingType.ticket,
+      slotId: "slot_09",
+    ),
+  ];
+
+  static List<User> users = [
+    User(
+      id: "user_01",
+      name: "Monica",
+      userSubscription: null, 
+      bookedBike: bookings[0], 
+    ),
+    User(
+      id: "user_02",
+      name: "Dara",
+      userSubscription: null,
+      bookedBike: null,
     ),
   ];
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:velotoulouse/data/repository/bike_repository.dart';
+import 'package:velotoulouse/data/repository/bike/bike_repository.dart';
 import 'package:velotoulouse/models/bike.dart';
 import 'package:velotoulouse/models/slot.dart';
 import 'package:velotoulouse/models/station.dart';

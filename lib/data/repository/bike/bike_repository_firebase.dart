@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:velotoulouse/data/dtos/bike_dto.dart';
-import 'package:velotoulouse/data/repository/bike_repository.dart';
+import 'package:velotoulouse/data/repository/bike/bike_repository.dart';
 import 'package:velotoulouse/models/bike.dart';
 import 'package:http/http.dart' as http;
 
