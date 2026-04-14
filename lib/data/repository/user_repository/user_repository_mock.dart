@@ -11,7 +11,7 @@ class UserRepositoryMock implements UserRepository {
 
   @override
   Future<User?> updateUser(User user) async {
-    if (_user.id == user.id) return null;
+    if (_user.id != user.id) return null;
     _user = user;
     return _user;
   }

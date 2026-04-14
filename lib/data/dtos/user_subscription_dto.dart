@@ -17,7 +17,7 @@ class UserSubscriptionDto {
 
   static Map<String, dynamic> toJson(UserSubscription userSubscription) {
     return {
-      expirationDateKey: userSubscription.expirationDate.toIso8601String(),
+      expirationDateKey: userSubscription.expirationDate?.toIso8601String(),
       passTypeKey: userSubscription.passType.name,
     };
   }
