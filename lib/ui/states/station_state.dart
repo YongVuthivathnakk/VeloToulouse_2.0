@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:velotoulouse/data/repository/station_repository/station_repository.dart';
+import 'package:velotoulouse/models/slot.dart';
 import 'package:velotoulouse/models/station.dart';
 
 class StationState extends ChangeNotifier {
@@ -31,4 +32,5 @@ class StationState extends ChangeNotifier {
     _selectedStation = await stationRepository.getStation(stationId);
     notifyListeners();
   }
+  
 }

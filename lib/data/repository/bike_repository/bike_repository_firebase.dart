@@ -24,4 +24,40 @@ class BikeRepositoryFirebase implements BikeRepository {
       throw Exception("Error fetching bike: $e");
     }
   }
+
+  @override
+  Future<Bike?> updateBikeAvailability(String bikeId, bool status) {
+    // TODO: implement updateBikeAvailability
+    throw UnimplementedError();
+  }
+
+@override
+  Future<List<Bike>> getAllBike() async {
+    final uri = Uri.https(_baseUrl, 'bikes.json');
+
+    try {
+      final http.Response response = await http.get(uri);
+
+      if (response.statusCode != 200) {
+        throw Exception("Failed to load bikes: ${response.statusCode}");
+      }
+
+      if (response.body == 'null') {
+        return [];
+      }
+
+      final Map<String, dynamic> bikeJson =
+          jsonDecode(response.body) as Map<String, dynamic>;
+
+      final List<Bike> bikes = bikeJson.entries.map((entry) {
+        final id = entry.key;
+        final data = entry.value as Map<String, dynamic>;
+        return BikeDto.fromJson(id, data);
+      }).toList();
+
+      return bikes;
+    } catch (e) {
+      throw Exception("Error fetching bikes: $e");
+    }
+  }
 }

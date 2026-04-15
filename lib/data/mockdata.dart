@@ -8,13 +8,13 @@ import 'package:velotoulouse/models/user_subscription.dart';
 
 class MockData {
   static List<Bike> bikes = [
-    Bike(id: 'bike_01'),
-    Bike(id: 'bike_02'),
-    Bike(id: 'bike_03'),
-    Bike(id: 'bike_04'),
-    Bike(id: 'bike_05'),
-    Bike(id: 'bike_06'),
-    Bike(id: 'bike_07'),
+    Bike(id: 'bike_01', isAvailable: false),
+    Bike(id: 'bike_02', isAvailable: true),
+    Bike(id: 'bike_03', isAvailable: true),
+    Bike(id: 'bike_04', isAvailable: true),
+    Bike(id: 'bike_05', isAvailable: true),
+    Bike(id: 'bike_06', isAvailable: true),
+    Bike(id: 'bike_07', isAvailable: true),
   ];
 
   static List<Station> stations = [

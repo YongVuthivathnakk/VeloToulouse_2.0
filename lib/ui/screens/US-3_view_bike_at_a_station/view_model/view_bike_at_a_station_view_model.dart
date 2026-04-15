@@ -15,39 +15,37 @@ class ViewBikeAtAStationViewModel extends ChangeNotifier {
     required this.stationState,
   }) {
     stationState.addListener(notifyListeners);
-    // _init();
+    _init();
   }
 
-
-  // void _init() async {
-  //   loadBike();
-  // }
-
-  // void loadBike() async {
-  //   final station = stationState.selectedStation;
-  //   if (station == null) return;
-  //   bikeValue = AsyncValue.loading();
-  //   notifyListeners();
-  //   try {
-  //     final bikesData = await bikeRepository.getAllBikeFromAStation(station.id);
-  //     bikeValue = AsyncValue.success(bikesData);
-  //   } catch (e) {
-  //     bikeValue = AsyncValue.error(e);
-  //   }
-  //   notifyListeners();
-  // }
-
   Station? get selectedStation => stationState.selectedStation;
+
   List<Slot> get allSlots => selectedStation?.slots ?? [];
   List<Slot> get occupiedSlots => selectedStation?.occupiedSlots ?? [];
-  List<Slot> get emptySlot => selectedStation?.emptySlots ?? [];
-  int get totalSlots => selectedStation?.totalSlots ?? 0;
-  int get availableSlots => selectedStation?.availableSlots ?? 0;
+  List<Bike> _bikes = [];
+  Future<void> _init() async {
+    _bikes = await bikeRepository.getAllBike();
+    notifyListeners();
+  }
 
+  bool shouldDisplaySlot(Slot slot) {
+    if (slot.bikeId == null) return true;
 
-  // List<int> get availableSlots {
-  //   final station = stationState.selectedStation;
-  //   if (station == null) return [];
-  //   return station.getAvailableSlot();
-  // }
+    final bike = _bikes.firstWhere((bike) => bike.id == slot.bikeId);
+
+    return bike.isAvailable;
+  }
+
+  int get totalAvailableBikeSlots {
+    return allSlots.where((slot) {
+      if (slot.bikeId == null) return false;
+
+      final bike = _bikes.firstWhere(
+        (bike) => bike.id == slot.bikeId,
+        orElse: () => Bike(id: '', isAvailable: false),
+      );
+
+      return bike.isAvailable;
+    }).length;
+  }
 }

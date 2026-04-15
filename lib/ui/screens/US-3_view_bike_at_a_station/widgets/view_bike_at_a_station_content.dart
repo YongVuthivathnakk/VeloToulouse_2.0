@@ -16,6 +16,7 @@ class ViewBikeAtAStationContent extends StatelessWidget {
 
     List<Widget> buildSlotTile() {
       return vm.allSlots
+          .where((slot) => vm.shouldDisplaySlot(slot))
           .map(
             (slot) => SlotTile(
               slotNumber: slot.slotNumber,
@@ -64,7 +65,7 @@ class ViewBikeAtAStationContent extends StatelessWidget {
                             StatusBadge(
                               label: 'Available',
                               dotIndicator: true,
-                              number: station.occupiedSlots.length,
+                              number: vm.totalAvailableBikeSlots,
                               backgroundColor: AppColors.primaryLight,
                               textColor: AppColors.primaryDark,
                             ),
