@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
 
 class MapSearchBar extends StatelessWidget {
-  final VoidCallback? onTap;
+  final VoidCallback onTap;
 
-  const MapSearchBar({super.key, this.onTap});
+  const MapSearchBar({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

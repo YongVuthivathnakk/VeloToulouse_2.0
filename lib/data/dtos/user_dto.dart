@@ -19,9 +19,9 @@ class UserDto {
               json[userSubscriptionKey],
             )
           : null,
-      bookedBike: json[bookedBikeKey] != null
-          ? BookingDto.fromJson(json[bookedBikeKey]['id'], json[bookedBikeKey])
-          : null,
+      // bookedBike: json[bookedBikeKey] != null
+      //     ? BookingDto.fromJson(json[bookedBikeKey]['id'], json[bookedBikeKey])
+      //     : null,
     );
   }
 
@@ -31,9 +31,9 @@ class UserDto {
       userSubscriptionKey: user.userSubscription != null
           ? UserSubscriptionDto.toJson(user.userSubscription!)
           : null,
-      bookedBikeKey: user.bookedBike != null
-          ? BookingDto.toJson(user.bookedBike!)
-          : null,
+      // bookedBikeKey: user.bookedBike != null
+      //     ? BookingDto.toJson(user.bookedBike!)
+      //     : null,
     };
   }
 }

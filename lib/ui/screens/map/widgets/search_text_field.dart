@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:velotoulouse/ui/screens/map/widgets/search_container.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
 
 class SearchTextField extends StatelessWidget {
@@ -16,32 +15,45 @@ class SearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SearchContainer(
-      child: TextField(
-        onChanged: onChanged,
-        style: AppText.body.copyWith(color: AppColors.grey900),
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: AppRadius.mdR,
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 8,
+              offset: Offset(0, 3),
+            ),
+          ],
+        ),
+        child: TextField(
+          onChanged: onChanged,
+          style: AppText.body.copyWith(color: AppColors.grey900),
+          decoration: InputDecoration(
+            hintText: "Search stations...",
+            hintStyle: AppText.body.copyWith(color: AppColors.grey500),
 
-        decoration: InputDecoration(
-          hintText: "Search stations...",
-          hintStyle: AppText.body.copyWith(color: AppColors.grey500),
+            prefixIcon: Icon(Icons.search, color: AppColors.grey500),
 
-          prefixIcon: Icon(Icons.search, color: AppColors.grey500),
+            suffixIcon: query.isNotEmpty
+                ? IconButton(
+                    icon: Icon(Icons.close, color: AppColors.grey500),
+                    onPressed: onClear,
+                  )
+                : null,
 
-          suffixIcon: query.isNotEmpty
-              ? IconButton(
-                  icon: Icon(Icons.close, color: AppColors.grey500),
-                  onPressed: onClear,
-                )
-              : null,
+            border: OutlineInputBorder(
+              borderRadius: AppRadius.mdR,
+              borderSide: BorderSide.none,
+            ),
 
-          border: OutlineInputBorder(
-            borderRadius: AppRadius.mdR,
-            borderSide: BorderSide.none,
-          ),
-
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 14,
-            horizontal: 12,
+            contentPadding: const EdgeInsets.symmetric(
+              vertical: 14,
+              horizontal: 12,
+            ),
           ),
         ),
       ),

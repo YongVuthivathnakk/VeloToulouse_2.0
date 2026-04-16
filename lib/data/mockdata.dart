@@ -7,13 +7,13 @@ import 'package:velotoulouse/models/bike.dart';
 import 'package:velotoulouse/models/user.dart';
 
 class MockData {
-  static List<Bike> bikes = [
-    Bike(id: "bike_01", isAvailable: true),
-    Bike(id: "bike_02", isAvailable: true),
-    Bike(id: "bike_03", isAvailable: true),
-    Bike(id: "bike_04", isAvailable: true),
-    Bike(id: "bike_05", isAvailable: true),
-  ];
+  // static List<Bike> bikes = [
+  //   Bike(id: "bike_01", isAvailable: true),
+  //   Bike(id: "bike_02", isAvailable: true),
+  //   Bike(id: "bike_03", isAvailable: true),
+  //   Bike(id: "bike_04", isAvailable: true),
+  //   Bike(id: "bike_05", isAvailable: true),
+  // ];
 
   static List<Station> stations = [
     Station(
@@ -69,35 +69,20 @@ class MockData {
     ),
   ];
 
-  static List<Booking> bookings = [
-    Booking(
-      id: "booking_01",
-      bookingTime: DateTime.now(),
-      bookingStatus: BookingStatus.active,
-      bookingType: BookingType.ticket,
-      slotId: "slot_01",
-    ),
-    Booking(
-      id: "booking_02",
-      bookingTime: DateTime.now().subtract(Duration(minutes: 30)),
-      bookingStatus: BookingStatus.completed,
-      bookingType: BookingType.ticket,
-      slotId: "slot_09",
-    ),
-  ];
+  static Booking bookings = Booking(
+    id: "booking_02",
+    userId: "user_01",
+    bookingTime: DateTime.now().subtract(Duration(minutes: 30)),
+    bookingStatus: BookingStatus.completed,
+    bookingType: BookingType.ticket,
+    stationId: "station_01",
+    slotId: "slot_09",
+  );
 
-  static List<User> users = [
-    User(
-      id: "user_01",
-      name: "Monica",
-      userSubscription: null, 
-      bookedBike: bookings[0], 
-    ),
-    User(
-      id: "user_02",
-      name: "Dara",
-      userSubscription: null,
-      bookedBike: null,
-    ),
-  ];
+  static User user = User(
+    id: "user_01",
+    name: "Monica",
+    userSubscription: null,
+    // bookedBike: bookings[0],
+  );
 }

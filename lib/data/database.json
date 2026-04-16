@@ -172,7 +172,7 @@
     }
   },
   "bikes": {
-    "bike_01": { "isAvailable": true },
+    "bike_01": { "isAvailable": false },
     "bike_02": { "isAvailable": true },
     "bike_03": { "isAvailable": true },
     "bike_04": { "isAvailable": true },
@@ -191,5 +191,24 @@
     "bike_17": { "isAvailable": true },
     "bike_18": { "isAvailable": true },
     "bike_19": { "isAvailable": true }
+  },
+  "users": {
+    "user_01": {
+      "id": "user_01",
+      "name": "Monica"
+    }
+  },
+  "bookings": {
+    "user_01": {
+      "booking_01": {
+        "id": "booking_01",
+        "userId": "user_01",
+        "bookingTime": "2026-04-14T10:00:00.000Z",
+        "bookingStatus": "reserved",
+        "bookingType": "pass",
+        "stationId": "station_01",
+        "slotId": "slot_01"
+      }
+    }
   }
 }
