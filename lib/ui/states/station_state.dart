@@ -16,7 +16,7 @@ class StationState extends ChangeNotifier {
   Station? get selectedStation => _selectedStation;
 
   Future<void> _init() async {
-    print("Fetching stations...");
+    print("Fetching stations");
     try {
       _stations = await stationRepository.getAllStation();
       print("Stations loaded: ${_stations.length}");
@@ -31,6 +31,35 @@ class StationState extends ChangeNotifier {
   Future<void> selectStation(String stationId) async {
     _selectedStation = await stationRepository.getStation(stationId);
     notifyListeners();
+  }
+
+  Future<void> refreshSelectedStation() async {
+    if (_selectedStation == null) return;
+
+    try {
+      final updated = await stationRepository.getStation(_selectedStation!.id);
+      _selectedStation = updated;
+      notifyListeners();
+    } catch (e) {
+      print("Error refreshing station: $e");
+    }
+  }
+
+  Future<void> refreshAll() async {
+    try {
+      _stations = await stationRepository.getAllStation();
+
+      if (_selectedStation != null) {
+        _selectedStation = _stations.firstWhere(
+          (s) => s.id == _selectedStation!.id,
+          orElse: () => _selectedStation!,
+        );
+      }
+
+      notifyListeners();
+    } catch (e) {
+      print("Error refreshing stations: $e");
+    }
   }
   
 }

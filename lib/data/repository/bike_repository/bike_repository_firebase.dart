@@ -26,12 +26,31 @@ class BikeRepositoryFirebase implements BikeRepository {
   }
 
   @override
-  Future<Bike?> updateBikeAvailability(String bikeId, bool status) {
-    // TODO: implement updateBikeAvailability
-    throw UnimplementedError();
+  Future<Bike?> updateBikeAvailability(String bikeId, bool status) async {
+    final uri = Uri.https(_baseUrl, 'bikes/$bikeId.json');
+
+    try {
+      final response = await http.patch(
+        uri,
+        body: jsonEncode({'isAvailable': status}),
+      );
+
+      if (response.statusCode != 200) {
+        throw Exception("Failed to update bike: ${response.statusCode}");
+      }
+
+      if (response.body == 'null') return null;
+
+      final Map<String, dynamic> json =
+          jsonDecode(response.body) as Map<String, dynamic>;
+
+      return BikeDto.fromJson(bikeId, json);
+    } catch (e) {
+      throw Exception("Error updating bike availability: $e");
+    }
   }
 
-@override
+  @override
   Future<List<Bike>> getAllBike() async {
     final uri = Uri.https(_baseUrl, 'bikes.json');
 

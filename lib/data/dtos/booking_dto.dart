@@ -8,10 +8,6 @@ class BookingDto {
   static const String slotIdKey = 'slotId';
 
   static Booking fromJson(String id, Map<dynamic, dynamic> json) {
-    assert(json[bookingTimeKey] is String);
-    assert(json[bookingStatusKey] is String);
-    assert(json[bookingTypeKey] is String);
-    assert(json[slotIdKey] is String);
     return Booking(
       id: id,
       bookingTime: DateTime.parse(json[bookingTimeKey]),
@@ -23,6 +19,7 @@ class BookingDto {
 
   static Map<String, dynamic> toJson(Booking booking) {
     return {
+      idKey: booking.id,
       bookingTimeKey: booking.bookingTime.toIso8601String(),
       bookingStatusKey: booking.bookingStatus.name,
       bookingTypeKey: booking.bookingType.name,

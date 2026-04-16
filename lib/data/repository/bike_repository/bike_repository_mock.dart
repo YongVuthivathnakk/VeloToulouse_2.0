@@ -3,10 +3,13 @@ import 'package:velotoulouse/data/repository/bike_repository/bike_repository.dar
 import 'package:velotoulouse/models/bike.dart';
 
 class BikeRepositoryMock implements BikeRepository {
+  final MockData mockData;
+  BikeRepositoryMock({required this.mockData});
+
   @override
   Future<Bike?> getBike(String id) async {
     try {
-      return MockData.bikes.firstWhere((bike) => bike.id == id);
+      return mockData.bikes.firstWhere((bike) => bike.id == id);
     } catch (e) {
       throw Exception("There is no bike matched with this id");
     }
@@ -15,17 +18,17 @@ class BikeRepositoryMock implements BikeRepository {
   @override
   Future<Bike?> updateBikeAvailability(String bikeId, bool status) async {
     try {
-      final index = MockData.bikes.indexWhere((bike) => bike.id == bikeId);
+      final index = mockData.bikes.indexWhere((bike) => bike.id == bikeId);
 
       if (index == -1) {
         throw Exception("Bike not found");
       }
 
-      final bike = MockData.bikes[index];
+      final bike = mockData.bikes[index];
 
       final updatedBike = bike.copyWith(isAvailable: status);
 
-      MockData.bikes[index] = updatedBike;
+      mockData.bikes[index] = updatedBike;
 
       return updatedBike;
     } catch (e) {
@@ -35,6 +38,6 @@ class BikeRepositoryMock implements BikeRepository {
 
   @override
   Future<List<Bike>> getAllBike() async {
-    return MockData.bikes;
+    return mockData.bikes;
   }
 }

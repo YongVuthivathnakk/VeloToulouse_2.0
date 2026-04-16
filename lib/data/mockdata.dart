@@ -1,5 +1,6 @@
 import 'package:latlng/latlng.dart';
 import 'package:velotoulouse/models/bike.dart';
+import 'package:velotoulouse/models/booking.dart';
 import 'package:velotoulouse/models/location.dart';
 import 'package:velotoulouse/models/slot.dart';
 import 'package:velotoulouse/models/station.dart';
@@ -7,8 +8,8 @@ import 'package:velotoulouse/models/user.dart';
 import 'package:velotoulouse/models/user_subscription.dart';
 
 class MockData {
-  static List<Bike> bikes = [
-    Bike(id: 'bike_01', isAvailable: false),
+  List<Bike> bikes = [
+    Bike(id: 'bike_01', isAvailable: true),
     Bike(id: 'bike_02', isAvailable: true),
     Bike(id: 'bike_03', isAvailable: true),
     Bike(id: 'bike_04', isAvailable: true),
@@ -17,7 +18,7 @@ class MockData {
     Bike(id: 'bike_07', isAvailable: true),
   ];
 
-  static List<Station> stations = [
+  List<Station> stations = [
     Station(
       id: 'station_01',
       name: 'Wat Phnom',
@@ -105,8 +106,9 @@ class MockData {
     ),
   ];
 
-  // Happy path — active monthly subscription
-  static final user = User(
+  List<Booking> bookings = [];
+
+  User user = User(
     id: 'user_01',
     name: 'Dara Chan',
     userSubscription: UserSubscription(
@@ -117,6 +119,5 @@ class MockData {
   );
 
   // No subscription — tests blocked booking path
-  static final userNoSubscription = User(id: 'user_02', name: 'Sophea Kem');
-
+  User userNoSubscription = User(id: 'user_02', name: 'Sophea Kem');
 }

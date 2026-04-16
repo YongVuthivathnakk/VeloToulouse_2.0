@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:velotoulouse/data/repository/bike_repository/bike_repository.dart';
 import 'package:velotoulouse/data/repository/booking_repository/booking_repository.dart';
 import 'package:velotoulouse/data/repository/slot_repository/slot_repository.dart';
@@ -5,6 +6,7 @@ import 'package:velotoulouse/data/repository/user_repository/user_repository.dar
 import 'package:velotoulouse/models/booking.dart';
 import 'package:velotoulouse/models/user.dart';
 import 'package:uuid/uuid.dart';
+import 'package:velotoulouse/models/user_subscription.dart';
 
 class BookingService {
   final BookingRepository bookingRepository;
@@ -50,8 +52,15 @@ class BookingService {
 
     await bikeRepository.updateBikeAvailability(bikeId, false);
 
+    User updatedUser = user.copyWith(bookedBike: createdBooking);
 
-    await userRepository.updateUser(user.copyWith(bookedBike: createdBooking));
+    if (user.userSubscription?.passType == PassType.oneTimeTicket) {
+      updatedUser = updatedUser.copyWith(clearSubscription: true);
+    }
+    print("updateUser CALLED");
+    await userRepository.updateUser(updatedUser);
+
+
     return createdBooking;
   }
 }

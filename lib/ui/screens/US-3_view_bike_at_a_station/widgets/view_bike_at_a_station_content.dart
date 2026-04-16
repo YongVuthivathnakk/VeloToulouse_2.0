@@ -13,9 +13,9 @@ class ViewBikeAtAStationContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final vm = context.watch<ViewBikeAtAStationViewModel>();
     final station = vm.stationState.selectedStation;
-
+    final slots = station?.slots ?? [];
     List<Widget> buildSlotTile() {
-      return vm.allSlots
+      return slots
           .where((slot) => vm.shouldDisplaySlot(slot))
           .map(
             (slot) => SlotTile(

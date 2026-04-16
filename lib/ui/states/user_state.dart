@@ -26,13 +26,12 @@ class UserState extends ChangeNotifier {
 
   Future<void> updateUser(User user) async {
     try {
-      final newUser = await userRepository.updateUser(user);
-      if (newUser != null) {
-        _currentUser = newUser;
-      }
+      await userRepository.updateUser(user);
+      _currentUser = user;
     } catch (e) {
       print('Error updating user: $e');
     }
+
     notifyListeners();
   }
 }

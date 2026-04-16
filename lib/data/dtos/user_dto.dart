@@ -9,31 +9,38 @@ class UserDto {
   static const String bookedBikeKey = 'bookedBike';
 
   static User fromJson(String id, Map<dynamic, dynamic> json) {
-    assert(json[nameKey] is String);
+    final subscriptionJson = json[userSubscriptionKey];
+    final bookingJson = json[bookedBikeKey];
+
     return User(
       id: id,
-      name: json[nameKey],
-      userSubscription: json[userSubscriptionKey] != null
+      name: json[nameKey] as String? ?? '',
+      userSubscription: subscriptionJson is Map<String, dynamic>
           ? UserSubscriptionDto.fromJson(
-              json[userSubscriptionKey]['id'],
-              json[userSubscriptionKey],
+              subscriptionJson['id'] ?? '',
+              subscriptionJson,
             )
           : null,
-      bookedBike: json[bookedBikeKey] != null
-          ? BookingDto.fromJson(json[bookedBikeKey]['id'], json[bookedBikeKey])
+      bookedBike: bookingJson is Map<String, dynamic>
+          ? BookingDto.fromJson(bookingJson['id'] ?? '', bookingJson)
           : null,
     );
   }
 
   static Map<String, dynamic> toJson(User user) {
-    return {
+    final map = <String, dynamic>{
       nameKey: user.name,
-      userSubscriptionKey: user.userSubscription != null
-          ? UserSubscriptionDto.toJson(user.userSubscription!)
-          : null,
       bookedBikeKey: user.bookedBike != null
           ? BookingDto.toJson(user.bookedBike!)
           : null,
     };
+
+    if (user.userSubscription != null) {
+      map[userSubscriptionKey] = UserSubscriptionDto.toJson(
+        user.userSubscription!,
+      );
+    }
+
+    return map;
   }
 }

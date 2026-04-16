@@ -14,8 +14,13 @@ class ViewBikeAtAStationViewModel extends ChangeNotifier {
     required this.bikeRepository,
     required this.stationState,
   }) {
-    stationState.addListener(notifyListeners);
+    stationState.addListener(_onStationChanged);
     _init();
+  }
+
+  Future<void> _onStationChanged() async {
+    _bikes = await bikeRepository.getAllBike();
+    notifyListeners();
   }
 
   Station? get selectedStation => stationState.selectedStation;

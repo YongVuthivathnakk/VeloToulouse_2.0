@@ -43,8 +43,25 @@ class StationRepositoryFirebase extends StationRepository {
   }
   
   @override
-  Future<Station?> getStationBySlotId(String slotId) {
-    // TODO: implement getStationBySlotId
-    throw UnimplementedError();
+  Future<Station?> getStationBySlotId(String slotId) async {
+    final uri = Uri.https(_baseUrl, 'stations.json');
+  try {
+    final http.Response response = await http.get(uri);
+    if (response.statusCode == 200) {
+      if (response.body == 'null') return null;
+      Map<String, dynamic> stationsJson = jsonDecode(response.body);
+      final stationEntry = stationsJson.entries.firstWhere(
+        (entry) {
+          final slots = entry.value['slots'] as Map<dynamic, dynamic>?;
+          return slots != null && slots.containsKey(slotId);
+        },
+        orElse: () => throw Exception('No station found for slot $slotId'),
+      );
+      return StationDto.fromJson(stationEntry.key, stationEntry.value);
+    }
+    throw Exception("Failed to load stations: ${response.statusCode}");
+  } catch (e) {
+    throw Exception("Failed to get station by slot id: $e");
+  }
   }
 }

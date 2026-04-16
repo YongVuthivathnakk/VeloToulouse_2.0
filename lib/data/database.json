@@ -191,5 +191,12 @@
     "bike_17": { "isAvailable": true },
     "bike_18": { "isAvailable": true },
     "bike_19": { "isAvailable": true }
+  },
+  "users":{
+    "user_01": {
+    "id": "user_01",
+    "name": "Test User",
+    "bookedBike": null
+    }
   }
 }

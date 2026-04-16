@@ -3,16 +3,18 @@ import 'package:velotoulouse/data/repository/user_repository/user_repository.dar
 import 'package:velotoulouse/models/user.dart';
 
 class UserRepositoryMock implements UserRepository {
-  User _user = MockData.user;
+  final MockData mockData;
+  UserRepositoryMock({required this.mockData});
+  
   @override
   Future<User?> getUser() async {
-    return _user;
+    return mockData.userNoSubscription;
   }
 
   @override
   Future<User?> updateUser(User user) async {
-    if (_user.id != user.id) return null;
-    _user = user;
-    return _user;
+    if (mockData.user.id != user.id) return null;
+    mockData.user = user;
+    return mockData.userNoSubscription;
   }
 }
