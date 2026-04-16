@@ -16,4 +16,10 @@ class StationRepositoryMock implements StationRepository {
       throw Exception("Failed to get station ${e}");
     }
   }
+  
+  @override
+  Stream<List<Station>> watchStations() {
+    // TODO: implement watchStations
+    throw UnimplementedError();
+  }
 }
