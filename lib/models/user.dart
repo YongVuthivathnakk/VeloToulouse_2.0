@@ -5,13 +5,13 @@ class User {
   final String id;
   final String name;
   final UserSubscription? userSubscription;
-  //final Booking? bookedBike;
+  //final Booking? currentBooking;
 
   User({
     required this.id,
     required this.name,
     this.userSubscription,
-    //this.bookedBike,
+    //this.currentBooking,
   });
 
   User copyWith({
@@ -19,7 +19,7 @@ class User {
     UserSubscription? userSubscription,
     Booking? bookedBike,
     bool clearSubscription = false,
-    //bool clearBooking = false,
+    bool clearBooking = false,
   }) {
     return User(
       id: id,
@@ -27,7 +27,14 @@ class User {
       userSubscription: clearSubscription
           ? null
           : userSubscription ?? this.userSubscription,
-      //bookedBike: clearBooking ? null : bookedBike ?? this.bookedBike,
+      //currentBooking: clearBooking ? null : bookedBike ?? this.currentBooking,
     );
   }
+
+  bool get hasValidSubscription =>
+      userSubscription != null && !userSubscription!.isExpired;
+
+  //bool get hasActiveBooking => currentBooking != null;
+
+  //bool get canBook => hasValidSubscription && !hasActiveBooking;
 }

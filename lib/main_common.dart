@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
           });
         },
         selectedItemColor: AppColors.primary,
-        unselectedItemColor: AppColors.grey500, // muted gray
+        unselectedItemColor: AppColors.grey500,
         backgroundColor: Colors.white,
         selectedLabelStyle: const TextStyle(
           fontWeight: FontWeight.w600,

@@ -1,4 +1,11 @@
 enum PassType {
+  oneTimeTicket(
+    title: 'One Time Ticket',
+    subtitle: '',
+    price: 1.00,
+    description: '',
+    benefits: [],
+  ),
   daily(
     title: 'Daily',
     subtitle: '1-day ticket',
@@ -54,6 +61,8 @@ enum PassType {
         return '/ month';
       case PassType.yearly:
         return '/ year';
+      case PassType.oneTimeTicket:
+        throw PassType.oneTimeTicket;
     }
   }
 
@@ -65,22 +74,27 @@ enum PassType {
         return const Duration(days: 30);
       case PassType.yearly:
         return const Duration(days: 365);
+      case PassType.oneTimeTicket:
+        return Duration.zero;
     }
   }
 }
 
 class UserSubscription {
   final String id;
-  final DateTime expirationDate;
+  final DateTime? expirationDate;
   final PassType passType;
 
   UserSubscription({
     required this.id,
-    required this.expirationDate,
+    this.expirationDate,
     required this.passType,
   });
 
-  bool get isExpired => DateTime.now().isAfter(expirationDate);
+  bool get isExpired {
+    if (passType == PassType.oneTimeTicket) return false; 
+    return DateTime.now().isAfter(expirationDate!);
+  }
 
   UserSubscription copyWith({DateTime? expirationDate, PassType? passType}) {
     return UserSubscription(

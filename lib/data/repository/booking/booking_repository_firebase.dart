@@ -30,16 +30,18 @@ class BookingRepositoryFirebase implements BookingRepository {
   }
 
   @override
-  Future<void> createBooking(String userId, Booking booking) async {
+  Future<Booking> createBooking(String userId, Booking booking) async {
     final ref = _db.child('bookings/$userId');
 
-    await ref.push().set(BookingDto.toJson(booking));
+    final newRef = ref.push();
+    await newRef.set(BookingDto.toJson(booking));
+
+    return booking;
   }
-
+  
   @override
-  Future<void> updateBooking(String userId, Booking booking) async {
-    final ref = _db.child('bookings/$userId/${booking.id}');
-
-    await ref.update(BookingDto.toJson(booking));
+  Future<Booking?> updateBookingStatus(String bookingId, BookingStatus bookingStatus) {
+    // TODO: implement updateBookingStatus
+    throw UnimplementedError();
   }
 }

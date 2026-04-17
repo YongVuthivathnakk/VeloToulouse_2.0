@@ -58,7 +58,7 @@ class _StationSearchScreenState extends State<StationSearchScreen> {
                 return MapStationTile(
                   station: station,
                   onTap: () => Navigator.pop(context, station),
-                  available: vm.getAvailableBikes(station),
+                  available: vm.getBikeCount(station.id),
                 );
               },
             ),

@@ -7,15 +7,27 @@ class UserState extends ChangeNotifier {
   final UserRepository userRepo;
   final AuthState authState;
 
-  User? user;
-
   UserState(this.userRepo, this.authState);
+
+  User? _user;
+  User? get user => _user;
 
   Future<void> loadUser() async {
     final id = authState.userId;
     if (id == null) return;
 
-    user = await userRepo.getUser(id);
+    _user = await userRepo.getUser(id);
+    notifyListeners();
+  }
+
+  Future<void> updateUser(User user) async {
+    try {
+      await userRepo.updateUser(user);
+      _user = user;
+    } catch (e) {
+      print('Error updating user: $e');
+    }
+
     notifyListeners();
   }
 }

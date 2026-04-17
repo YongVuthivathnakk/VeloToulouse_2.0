@@ -1,24 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:velotoulouse/models/station.dart';
+import 'package:velotoulouse/ui/screens/bike_booking/bike_booking_screen.dart';
+import 'package:velotoulouse/ui/screens/station_details/view_model/station_details_view_model.dart';
 import 'package:velotoulouse/ui/screens/station_details/widgets/slot_tile.dart';
-import 'package:velotoulouse/ui/screens/station_details/widgets/status_badge.dart';
+import 'package:velotoulouse/ui/widgets/status_badge.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
 
-class ViewBikeAtAStationContent extends StatelessWidget {
+class StationDetailsContent extends StatelessWidget {
   final Station selectedStation;
-  const ViewBikeAtAStationContent({super.key, required this.selectedStation});
+  const StationDetailsContent({super.key, required this.selectedStation});
 
   @override
   Widget build(BuildContext context) {
-    //final vm = context.watch<ViewBikeAtAStationViewModel>();
-    //final station = vm.stationState.selectedStation;
-
+    final vm = context.watch<StationDetailsViewModel>();
     List<Widget> buildSlotTile() {
       return selectedStation.slots
+          .where((slot) => vm.shouldDisplaySlot(slot))
           .map(
             (slot) => SlotTile(
               slotNumber: slot.slotNumber,
               isOccupied: slot.isOccupied,
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BikeBookingScreen(slot: slot),
+                ),
+              ),
             ),
           )
           .toList();
@@ -35,8 +43,7 @@ class ViewBikeAtAStationContent extends StatelessWidget {
         ),
         title: Text("Station Information", style: AppText.h2),
       ),
-      body: 
-           Padding(
+      body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: Column(
                 children: [
@@ -58,7 +65,7 @@ class ViewBikeAtAStationContent extends StatelessWidget {
                             StatusBadge(
                               label: 'Available',
                               dotIndicator: true,
-                              number: selectedStation.occupiedSlots.length,
+                              number: selectedStation.availableSlots,
                               backgroundColor: AppColors.primaryLight,
                               textColor: AppColors.primaryDark,
                             ),

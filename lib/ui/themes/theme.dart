@@ -48,6 +48,10 @@ class AppText {
     fontSize: 18,
     fontWeight: FontWeight.w500,
   );
+  static const TextStyle h3Bold = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  );
   static const TextStyle body = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
@@ -133,3 +137,4 @@ ThemeData get lightTheme => ThemeData(
     labelLarge: AppText.button,
   ),
 );
+ 

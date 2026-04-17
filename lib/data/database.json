@@ -10,11 +10,11 @@
         "lng": 104.9214
       },
       "slots": {
-        "slot_01": { "slotNumber": 1, "bikeId": "bike_01" },
-        "slot_02": { "slotNumber": 2, "bikeId": "bike_02" },
-        "slot_03": { "slotNumber": 3, "bikeId": null },
-        "slot_04": { "slotNumber": 4, "bikeId": null },
-        "slot_05": { "slotNumber": 5, "bikeId": null }
+        "slot_01": { "slotNumber": 1, "bikeId": "bike_01", "stationId": "station_01" },
+        "slot_02": { "slotNumber": 2, "bikeId": "bike_02", "stationId": "station_01" },
+        "slot_03": { "slotNumber": 3, "bikeId": null, "stationId": "station_01" },
+        "slot_04": { "slotNumber": 4, "bikeId": null, "stationId": "station_01" },
+        "slot_05": { "slotNumber": 5, "bikeId": null, "stationId": "station_01" }
       }
     },
     "station_02": {
@@ -27,11 +27,11 @@
         "lng": 104.9301
       },
       "slots": {
-        "slot_06": { "slotNumber": 1, "bikeId": "bike_03" },
-        "slot_07": { "slotNumber": 2, "bikeId": null },
-        "slot_08": { "slotNumber": 3, "bikeId": null },
-        "slot_09": { "slotNumber": 4, "bikeId": "bike_04" },
-        "slot_10": { "slotNumber": 5, "bikeId": null }
+        "slot_06": { "slotNumber": 1, "bikeId": "bike_03", "stationId": "station_02" },
+        "slot_07": { "slotNumber": 2, "bikeId": null, "stationId": "station_02" },
+        "slot_08": { "slotNumber": 3, "bikeId": null, "stationId": "station_02" },
+        "slot_09": { "slotNumber": 4, "bikeId": "bike_04", "stationId": "station_02" },
+        "slot_10": { "slotNumber": 5, "bikeId": null, "stationId": "station_02" }
       }
     },
     "station_03": {
@@ -44,11 +44,11 @@
         "lng": 104.9174
       },
       "slots": {
-        "slot_11": { "slotNumber": 1, "bikeId": null },
-        "slot_12": { "slotNumber": 2, "bikeId": "bike_05" },
-        "slot_13": { "slotNumber": 3, "bikeId": null },
-        "slot_14": { "slotNumber": 4, "bikeId": null },
-        "slot_15": { "slotNumber": 5, "bikeId": null }
+        "slot_11": { "slotNumber": 1, "bikeId": null, "stationId": "station_03" },
+        "slot_12": { "slotNumber": 2, "bikeId": "bike_05", "stationId": "station_03" },
+        "slot_13": { "slotNumber": 3, "bikeId": null, "stationId": "station_03" },
+        "slot_14": { "slotNumber": 4, "bikeId": null, "stationId": "station_03" },
+        "slot_15": { "slotNumber": 5, "bikeId": null, "stationId": "station_03" }
       }
     },
     "station_04": {
@@ -61,11 +61,11 @@
         "lng": 104.9233
       },
       "slots": {
-        "slot_16": { "slotNumber": 1, "bikeId": "bike_06" },
-        "slot_17": { "slotNumber": 2, "bikeId": null },
-        "slot_18": { "slotNumber": 3, "bikeId": "bike_07" },
-        "slot_19": { "slotNumber": 4, "bikeId": null },
-        "slot_20": { "slotNumber": 5, "bikeId": null }
+        "slot_16": { "slotNumber": 1, "bikeId": "bike_06", "stationId": "station_04" },
+        "slot_17": { "slotNumber": 2, "bikeId": null, "stationId": "station_04" },
+        "slot_18": { "slotNumber": 3, "bikeId": "bike_07", "stationId": "station_04" },
+        "slot_19": { "slotNumber": 4, "bikeId": null, "stationId": "station_04" },
+        "slot_20": { "slotNumber": 5, "bikeId": null, "stationId": "station_04" }
       }
     },
     "station_05": {
@@ -78,11 +78,11 @@
         "lng": 104.9178
       },
       "slots": {
-        "slot_21": { "slotNumber": 1, "bikeId": "bike_08" },
-        "slot_22": { "slotNumber": 2, "bikeId": "bike_09" },
-        "slot_23": { "slotNumber": 3, "bikeId": null },
-        "slot_24": { "slotNumber": 4, "bikeId": null },
-        "slot_25": { "slotNumber": 5, "bikeId": null }
+        "slot_21": { "slotNumber": 1, "bikeId": "bike_08", "stationId": "station_05" },
+        "slot_22": { "slotNumber": 2, "bikeId": "bike_09", "stationId": "station_05" },
+        "slot_23": { "slotNumber": 3, "bikeId": null, "stationId": "station_05" },
+        "slot_24": { "slotNumber": 4, "bikeId": null, "stationId": "station_05" },
+        "slot_25": { "slotNumber": 5, "bikeId": null, "stationId": "station_05" }
       }
     },
     "station_06": {
@@ -95,11 +95,11 @@
         "lng": 104.9247
       },
       "slots": {
-        "slot_26": { "slotNumber": 1, "bikeId": null },
-        "slot_27": { "slotNumber": 2, "bikeId": "bike_10" },
-        "slot_28": { "slotNumber": 3, "bikeId": null },
-        "slot_29": { "slotNumber": 4, "bikeId": "bike_11" },
-        "slot_30": { "slotNumber": 5, "bikeId": null }
+        "slot_26": { "slotNumber": 1, "bikeId": null, "stationId": "station_06" },
+        "slot_27": { "slotNumber": 2, "bikeId": "bike_10", "stationId": "station_06" },
+        "slot_28": { "slotNumber": 3, "bikeId": null, "stationId": "station_06" },
+        "slot_29": { "slotNumber": 4, "bikeId": "bike_11", "stationId": "station_06" },
+        "slot_30": { "slotNumber": 5, "bikeId": null, "stationId": "station_06" }
       }
     },
     "station_07": {
@@ -112,11 +112,11 @@
         "lng": 104.9311
       },
       "slots": {
-        "slot_31": { "slotNumber": 1, "bikeId": "bike_12" },
-        "slot_32": { "slotNumber": 2, "bikeId": null },
-        "slot_33": { "slotNumber": 3, "bikeId": null },
-        "slot_34": { "slotNumber": 4, "bikeId": null },
-        "slot_35": { "slotNumber": 5, "bikeId": "bike_13" }
+        "slot_31": { "slotNumber": 1, "bikeId": "bike_12", "stationId": "station_07" },
+        "slot_32": { "slotNumber": 2, "bikeId": null, "stationId": "station_07" },
+        "slot_33": { "slotNumber": 3, "bikeId": null, "stationId": "station_07" },
+        "slot_34": { "slotNumber": 4, "bikeId": null, "stationId": "station_07" },
+        "slot_35": { "slotNumber": 5, "bikeId": "bike_13", "stationId": "station_07" }
       }
     },
     "station_08": {
@@ -129,11 +129,11 @@
         "lng": 104.9121
       },
       "slots": {
-        "slot_36": { "slotNumber": 1, "bikeId": null },
-        "slot_37": { "slotNumber": 2, "bikeId": "bike_14" },
-        "slot_38": { "slotNumber": 3, "bikeId": null },
-        "slot_39": { "slotNumber": 4, "bikeId": null },
-        "slot_40": { "slotNumber": 5, "bikeId": "bike_15" }
+        "slot_36": { "slotNumber": 1, "bikeId": null, "stationId": "station_08" },
+        "slot_37": { "slotNumber": 2, "bikeId": "bike_14", "stationId": "station_08" },
+        "slot_38": { "slotNumber": 3, "bikeId": null, "stationId": "station_08" },
+        "slot_39": { "slotNumber": 4, "bikeId": null, "stationId": "station_08" },
+        "slot_40": { "slotNumber": 5, "bikeId": "bike_15", "stationId": "station_08" }
       }
     },
     "station_09": {
@@ -146,11 +146,11 @@
         "lng": 104.9171
       },
       "slots": {
-        "slot_41": { "slotNumber": 1, "bikeId": "bike_16" },
-        "slot_42": { "slotNumber": 2, "bikeId": null },
-        "slot_43": { "slotNumber": 3, "bikeId": null },
-        "slot_44": { "slotNumber": 4, "bikeId": "bike_17" },
-        "slot_45": { "slotNumber": 5, "bikeId": null }
+        "slot_41": { "slotNumber": 1, "bikeId": "bike_16", "stationId": "station_09" },
+        "slot_42": { "slotNumber": 2, "bikeId": null, "stationId": "station_09" },
+        "slot_43": { "slotNumber": 3, "bikeId": null, "stationId": "station_09" },
+        "slot_44": { "slotNumber": 4, "bikeId": "bike_17", "stationId": "station_09" },
+        "slot_45": { "slotNumber": 5, "bikeId": null, "stationId": "station_09" }
       }
     },
     "station_10": {
@@ -163,11 +163,11 @@
         "lng": 104.9298
       },
       "slots": {
-        "slot_46": { "slotNumber": 1, "bikeId": null },
-        "slot_47": { "slotNumber": 2, "bikeId": "bike_18" },
-        "slot_48": { "slotNumber": 3, "bikeId": null },
-        "slot_49": { "slotNumber": 4, "bikeId": null },
-        "slot_50": { "slotNumber": 5, "bikeId": "bike_19" }
+        "slot_46": { "slotNumber": 1, "bikeId": null, "stationId": "station_10" },
+        "slot_47": { "slotNumber": 2, "bikeId": "bike_18", "stationId": "station_10" },
+        "slot_48": { "slotNumber": 3, "bikeId": null, "stationId": "station_10" },
+        "slot_49": { "slotNumber": 4, "bikeId": null, "stationId": "station_10" },
+        "slot_50": { "slotNumber": 5, "bikeId": "bike_19", "stationId": "station_10" }
       }
     }
   },
@@ -192,12 +192,6 @@
     "bike_18": { "isAvailable": true },
     "bike_19": { "isAvailable": true }
   },
-  "users": {
-    "user_01": {
-      "id": "user_01",
-      "name": "Monica"
-    }
-  },
   "bookings": {
     "user_01": {
       "booking_01": {
@@ -209,6 +203,13 @@
         "stationId": "station_01",
         "slotId": "slot_01"
       }
+    }
+  },
+  "users": {
+    "user_01": {
+      "id": "user_01",
+      "name": "Test User",
+      "bookedBike": null
     }
   }
 }

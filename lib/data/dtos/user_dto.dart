@@ -1,3 +1,4 @@
+import 'package:velotoulouse/data/dtos/booking_dto.dart';
 import 'package:velotoulouse/data/dtos/user_subscription_dto.dart';
 import 'package:velotoulouse/models/user.dart';
 
@@ -5,34 +6,41 @@ class UserDto {
   static const String idKey = 'id';
   static const String nameKey = 'name';
   static const String userSubscriptionKey = 'userSubscription';
- // static const String bookedBikeKey = 'bookedBike';
+  //static const String bookedBikeKey = 'currentBooking';
 
   static User fromJson(String id, Map<dynamic, dynamic> json) {
-    assert(json[nameKey] is String);
+    final subscriptionJson = json[userSubscriptionKey];
+   // final bookingJson = json[bookedBikeKey];
+
     return User(
       id: id,
-      name: json[nameKey],
-      userSubscription: json[userSubscriptionKey] != null
+      name: json[nameKey] as String? ?? '',
+      userSubscription: subscriptionJson is Map<String, dynamic>
           ? UserSubscriptionDto.fromJson(
-              json[userSubscriptionKey]['id'],
-              json[userSubscriptionKey],
+              subscriptionJson['id'] ?? '',
+              subscriptionJson,
             )
           : null,
-      // bookedBike: json[bookedBikeKey] != null
-      //     ? BookingDto.fromJson(json[bookedBikeKey]['id'], json[bookedBikeKey])
+      // currentBooking: bookingJson is Map<String, dynamic>
+      //     ? BookingDto.fromJson(bookingJson['id'] ?? '', bookingJson)
       //     : null,
     );
   }
 
   static Map<String, dynamic> toJson(User user) {
-    return {
+    final map = <String, dynamic>{
       nameKey: user.name,
-      userSubscriptionKey: user.userSubscription != null
-          ? UserSubscriptionDto.toJson(user.userSubscription!)
-          : null,
-      // bookedBikeKey: user.bookedBike != null
-      //     ? BookingDto.toJson(user.bookedBike!)
+      // bookedBikeKey: user.currentBooking != null
+      //     ? BookingDto.toJson(user.currentBooking!)
       //     : null,
     };
+
+    if (user.userSubscription != null) {
+      map[userSubscriptionKey] = UserSubscriptionDto.toJson(
+        user.userSubscription!,
+      );
+    }
+
+    return map;
   }
 }

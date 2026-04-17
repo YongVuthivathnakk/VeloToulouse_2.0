@@ -18,8 +18,9 @@ class MapContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final MapController mapController = MapController();
     final vm = context.watch<MapViewModel>();
+    final isLoading = vm.bikeCountsState.state == AsyncValueState.loading;
 
-    if (vm.stationsState.state == AsyncValueState.loading) {
+    if (isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
 
@@ -78,7 +79,9 @@ class MapContent extends StatelessWidget {
                       },
                       child: StationMarker(
                         station: station,
-                        availableBikes: vm.getAvailableBikes(station),
+                        availableBikes: isLoading
+                            ? 0
+                            : vm.getBikeCount(station.id),
                       ),
                     ),
                   );
