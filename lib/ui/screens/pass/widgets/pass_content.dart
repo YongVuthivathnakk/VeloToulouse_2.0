@@ -1,7 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:velotoulouse/models/pass.dart';
+import 'package:provider/provider.dart';
+import 'package:velotoulouse/models/user_subscription.dart';
+import 'package:velotoulouse/ui/screens/pass/view_model/pass_view_model.dart';
+import 'package:velotoulouse/ui/screens/pass/widgets/one_time_ticket_active_card.dart';
 import 'package:velotoulouse/ui/screens/pass/widgets/pass_card.dart';
+import 'package:velotoulouse/ui/states/user_state.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
 
 class PassContent extends StatelessWidget {
@@ -10,7 +14,9 @@ class PassContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text("Pass Options", style: AppText.h2,))),
+      appBar: AppBar(
+        title: Center(child: Text("Pass Options", style: AppText.h2)),
+      ),
       body: PassCarousel(),
     );
   }
@@ -24,21 +30,40 @@ class PassCarousel extends StatefulWidget {
 }
 
 class _PassCarouselState extends State<PassCarousel> {
+  
+
+
   int _currentIndex = 0;
+
   final CarouselSliderController _controller = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
+    final vm = context.watch<PassViewModel>();
+    final currentPassType = vm.currentPass;
+    final isUsingOneTimeTicket = currentPassType == PassType.oneTimeTicket;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        // Show current pass info only when using one-time ticket
+        if (isUsingOneTimeTicket) OneTimeTicketActiveCard(),
         CarouselSlider.builder(
           carouselController: _controller,
-          itemCount: Pass.values.length - 1,
-          itemBuilder: (context, index, pageViewIndex) => PassCard(
-            pass: Pass.values[index + 1],
-            onChoose: () {}, 
-          ), 
+          itemCount: PassType.values.length - 1,
+          itemBuilder: (context, index, pageViewIndex) {
+            final pass = PassType.values[index + 1];
+            final isCurrentPass = currentPassType == pass;
+
+            return PassCard(
+              pass: pass,
+              isCurrentPass: isCurrentPass,
+              isLoading: vm.isLoading,
+              onChoose: () {
+                vm.handlePassContent(pass);
+              },
+            );
+          },
           options: CarouselOptions(
             height: 560,
             viewportFraction: 0.88,
@@ -48,17 +73,16 @@ class _PassCarouselState extends State<PassCarousel> {
             initialPage: 0,
             onPageChanged: (index, reason) {
               setState(() => _currentIndex = index);
-            }, 
-          ), 
+            },
+          ),
         ),
         const SizedBox(height: 12),
 
         // Dot indicatior ...
-
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
-            Pass.values.length - 1,
+            PassType.values.length - 1,
             (index) => GestureDetector(
               onTap: () => _controller.animateToPage(index),
               child: AnimatedContainer(
@@ -71,12 +95,14 @@ class _PassCarouselState extends State<PassCarousel> {
                       ? AppColors.primaryDark
                       : AppColors.grey300,
                   borderRadius: BorderRadius.circular(999),
-                ), 
-              ), 
-            ), 
-          ), 
-        ), 
-      ], 
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
+
+

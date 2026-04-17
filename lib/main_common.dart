@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:velotoulouse/app_starter.dart';
 import 'package:velotoulouse/firebase_options.dart';
 import 'package:velotoulouse/ui/screens/map/map_screen.dart';
+import 'package:velotoulouse/ui/screens/pass/pass_screen.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
 import 'package:velotoulouse/ui/widgets/booking_panel.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _currentIndex = 0;
-  final List<Widget> _pages = [MapScreen(), Placeholder()];
+  final List<Widget> _pages = [MapScreen(), PassScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

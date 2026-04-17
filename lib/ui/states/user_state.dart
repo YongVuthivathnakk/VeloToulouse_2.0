@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:velotoulouse/data/repository/user/user_repository.dart';
 import 'package:velotoulouse/models/user.dart';
+import 'package:velotoulouse/models/user_subscription.dart';
 import 'package:velotoulouse/ui/states/auth_state.dart';
 
 class UserState extends ChangeNotifier {
@@ -30,4 +31,6 @@ class UserState extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  PassType? get currentPass => _user?.userSubscription?.passType;
 }
