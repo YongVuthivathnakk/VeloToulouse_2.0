@@ -11,7 +11,7 @@ class PassViewModel extends ChangeNotifier {
   final UserState userState;
   final SubscriptionService passServcie;
 
-  AsyncValue<String> data = AsyncValue.success('');
+  AsyncValue<String> passData = AsyncValue.success('');
 
   PassViewModel({
     required this.userRepository,
@@ -30,17 +30,19 @@ class PassViewModel extends ChangeNotifier {
   PassType? get currentPass => userState.currentPass;
   User? get _currentUser => userState.user;
 
-  bool get isLoading => data.state == AsyncValueState.loading;
+  bool get isLoading => passData.state == AsyncValueState.loading;
   String? get errorMessage =>
-      data.state == AsyncValueState.error ? data.error.toString() : null;
+      passData.state == AsyncValueState.error ? passData.error.toString() : null;
 
   Future<void> handlePassContent(PassType newPass) async {
     if (newPass == currentPass) return;
     
-    data = AsyncValue.loading();
+    passData = AsyncValue.loading();
     notifyListeners();
 
     try {
+
+
       // Create new subscription and save to DB
       final newSubscription = await passServcie.createSubscription(
         user: _currentUser!,
@@ -53,12 +55,17 @@ class PassViewModel extends ChangeNotifier {
       );
       await userState.updateUser(updatedUser);
 
-      data = AsyncValue.success('Pass updated successfully');
+      passData = AsyncValue.success('Pass updated successfully');
       notifyListeners();
     } catch (e) {
-      data = AsyncValue<String>.error(e);
+      passData = AsyncValue<String>.error(e);
       notifyListeners();
     }
+  }
+
+  void clearSuccess() {
+    passData = AsyncValue.success('');
+    notifyListeners();
   }
 }
 

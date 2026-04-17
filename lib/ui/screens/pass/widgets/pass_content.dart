@@ -5,8 +5,10 @@ import 'package:velotoulouse/models/user_subscription.dart';
 import 'package:velotoulouse/ui/screens/pass/view_model/pass_view_model.dart';
 import 'package:velotoulouse/ui/screens/pass/widgets/one_time_ticket_active_card.dart';
 import 'package:velotoulouse/ui/screens/pass/widgets/pass_card.dart';
-import 'package:velotoulouse/ui/states/user_state.dart';
+import 'package:velotoulouse/ui/screens/pass/widgets/payment_bottom_sheet.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
+import 'package:velotoulouse/utils/async_value_state.dart';
+
 
 class PassContent extends StatelessWidget {
   const PassContent({super.key});
@@ -30,18 +32,53 @@ class PassCarousel extends StatefulWidget {
 }
 
 class _PassCarouselState extends State<PassCarousel> {
-  
-
-
   int _currentIndex = 0;
-
   final CarouselSliderController _controller = CarouselSliderController();
+  String? _lastSuccessMessage;
+
+  void _showPassSelectionBottomSheet(
+    BuildContext context,
+    PassType selectedPass,
+    PassViewModel vm,
+  ) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => PaymentBottomSheet(
+        pass: selectedPass,
+        isLoading: vm.isLoading,
+        onConfirm: () {
+          Navigator.pop(context);
+          vm.handlePassContent(selectedPass);
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final vm = context.watch<PassViewModel>();
     final currentPassType = vm.currentPass;
     final isUsingOneTimeTicket = currentPassType == PassType.oneTimeTicket;
+
+    // Show snackbar on successful payment
+    if (vm.passData.state == AsyncValueState.success &&
+        vm.passData.data != null &&
+        vm.passData.data!.isNotEmpty &&
+        _lastSuccessMessage != vm.passData.data) {
+      _lastSuccessMessage = vm.passData.data;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(vm.passData.data ?? 'Success!'),
+            backgroundColor: AppColors.primaryDark,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+        // Clear the success message after showing
+        vm.clearSuccess();
+      });
+    }
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -59,9 +96,7 @@ class _PassCarouselState extends State<PassCarousel> {
               pass: pass,
               isCurrentPass: isCurrentPass,
               isLoading: vm.isLoading,
-              onChoose: () {
-                vm.handlePassContent(pass);
-              },
+              onChoose: () => _showPassSelectionBottomSheet(context, pass, vm),
             );
           },
           options: CarouselOptions(
@@ -104,5 +139,3 @@ class _PassCarouselState extends State<PassCarousel> {
     );
   }
 }
-
-

@@ -48,7 +48,7 @@ class OneTimeTicketActiveCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: const Text(
-              'Active',
+              'Currently Using',
               style: TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.w700,

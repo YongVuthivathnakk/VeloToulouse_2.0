@@ -19,7 +19,7 @@ void mainCommon(List<InheritedProvider> providers) async {
   runApp(
     MultiProvider(
       providers: providers,
-      child: MaterialApp(debugShowCheckedModeBanner: false, home: AppStarter()),
+      child: MaterialApp(debugShowCheckedModeBanner: false, home: AppStarter(), theme: ThemeData(),),
     ),
   );
 }
