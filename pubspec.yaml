@@ -44,6 +44,7 @@ dependencies:
   latlong2: ^0.9.1
   firebase_core: ^4.7.0
   rxdart: ^0.28.0
+  carousel_slider: ^5.1.2
 
 dev_dependencies:
   flutter_test:
