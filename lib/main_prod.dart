@@ -1,24 +1,24 @@
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 // import 'package:velotoulouse/data/repository/bike/bike_repository.dart';
 // import 'package:velotoulouse/data/repository/bike/bike_repository_firebase.dart';
-//import 'package:velotoulouse/data/repository/bike/bike_repository_mock.dart';
-import 'package:velotoulouse/data/repository/station/station_repository.dart';
-import 'package:velotoulouse/data/repository/station/station_repository_firebase.dart';
-import 'package:velotoulouse/data/repository/station/station_repository_mock.dart';
-import 'package:velotoulouse/main_common.dart';
-import 'package:velotoulouse/ui/states/station_state.dart';
+// import 'package:velotoulouse/data/repository/bike/bike_repository_mock.dart';
+// import 'package:velotoulouse/data/repository/station_repository.dart';
+// import 'package:velotoulouse/data/repository/station_repository_firebase.dart';
+// import 'package:velotoulouse/data/repository/station_repository_mock.dart';
+// import 'package:velotoulouse/main_common.dart';
+// import 'package:velotoulouse/ui/states/station_state.dart';
 
-List<InheritedProvider> get devProviders {
-  return [
-    //Provider<BikeRepository>(create: (_) => BikeRepositoryFirebase()),
-    Provider<StationRepository>(create: (_) => StationRepositoryFirebase()),
-    ChangeNotifierProvider<StationState>(
-      create: (context) =>
-          StationState(stationRepository: context.read<StationRepository>()),
-    ),
-  ];
-}
+// List<InheritedProvider> get devProviders {
+//   return [
+//     Provider<BikeRepository>(create: (_) => BikeRepositoryFirebase()),
+//     Provider<StationRepository>(create: (_) => StationRepositoryFirebase()),
+//     ChangeNotifierProvider<StationState>(
+//       create: (context) =>
+//           StationState(stationRepository: context.read<StationRepository>()),
+//     ),
+//   ];
+// }
 
-void main() {
-  mainCommon(devProviders);
-}
+// void main() {
+//   mainCommon(devProviders);
+// }

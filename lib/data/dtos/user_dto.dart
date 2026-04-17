@@ -1,4 +1,3 @@
-import 'package:velotoulouse/data/dtos/booking_dto.dart';
 import 'package:velotoulouse/data/dtos/user_subscription_dto.dart';
 import 'package:velotoulouse/models/user.dart';
 
@@ -6,7 +5,7 @@ class UserDto {
   static const String idKey = 'id';
   static const String nameKey = 'name';
   static const String userSubscriptionKey = 'userSubscription';
-  static const String bookedBikeKey = 'bookedBike';
+ // static const String bookedBikeKey = 'bookedBike';
 
   static User fromJson(String id, Map<dynamic, dynamic> json) {
     assert(json[nameKey] is String);

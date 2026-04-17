@@ -1,19 +1,17 @@
 import 'package:latlong2/latlong.dart';
-import 'package:velotoulouse/models/booking.dart';
 import 'package:velotoulouse/models/location.dart';
 import 'package:velotoulouse/models/slot.dart';
 import 'package:velotoulouse/models/station.dart';
 import 'package:velotoulouse/models/bike.dart';
-import 'package:velotoulouse/models/user.dart';
 
 class MockData {
-  // static List<Bike> bikes = [
-  //   Bike(id: "bike_01", isAvailable: true),
-  //   Bike(id: "bike_02", isAvailable: true),
-  //   Bike(id: "bike_03", isAvailable: true),
-  //   Bike(id: "bike_04", isAvailable: true),
-  //   Bike(id: "bike_05", isAvailable: true),
-  // ];
+  static List<Bike> bikes = [
+    Bike(id: "bike_01", isAvailable: true),
+    Bike(id: "bike_02", isAvailable: true),
+    Bike(id: "bike_03", isAvailable: true),
+    Bike(id: "bike_04", isAvailable: true),
+    Bike(id: "bike_05", isAvailable: true),
+  ];
 
   static List<Station> stations = [
     Station(
@@ -68,21 +66,4 @@ class MockData {
       ],
     ),
   ];
-
-  static Booking bookings = Booking(
-    id: "booking_02",
-    userId: "user_01",
-    bookingTime: DateTime.now().subtract(Duration(minutes: 30)),
-    bookingStatus: BookingStatus.completed,
-    bookingType: BookingType.ticket,
-    stationId: "station_01",
-    slotId: "slot_09",
-  );
-
-  static User user = User(
-    id: "user_01",
-    name: "Monica",
-    userSubscription: null,
-    // bookedBike: bookings[0],
-  );
 }

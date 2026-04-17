@@ -29,12 +29,16 @@ List<InheritedProvider> get devProviders {
       create: (context) =>
           UserState(UserRepositoryFirebase(), context.read<AuthState>()),
     ),
-    ChangeNotifierProvider<StationState>(create: (context) => StationState(stationRepository: context.read<StationRepository>())),
+    // ChangeNotifierProvider<StationState>(
+    //   create: (context) =>
+    //       StationState(stationRepository: context.read<StationRepository>()),
+    // ),
     ChangeNotifierProvider<BookingState>(
       create: (context) => BookingState(
         service: BookingService(
-          stationRepo: context.read<StationRepository>(), 
-          bookingRepo: context.read<BookingRepository>()),
+          stationRepo: context.read<StationRepository>(),
+          bookingRepo: context.read<BookingRepository>(),
+        ),
         userId: context.read<AuthState>().userId!,
       )..startListening(),
     ),

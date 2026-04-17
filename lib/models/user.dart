@@ -19,7 +19,7 @@ class User {
     UserSubscription? userSubscription,
     Booking? bookedBike,
     bool clearSubscription = false,
-    bool clearBooking = false,
+    //bool clearBooking = false,
   }) {
     return User(
       id: id,
@@ -27,7 +27,7 @@ class User {
       userSubscription: clearSubscription
           ? null
           : userSubscription ?? this.userSubscription,
-     // bookedBike: clearBooking ? null : bookedBike ?? this.bookedBike,
+      //bookedBike: clearBooking ? null : bookedBike ?? this.bookedBike,
     );
   }
 }

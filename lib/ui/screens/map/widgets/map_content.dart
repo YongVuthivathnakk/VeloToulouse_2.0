@@ -6,6 +6,7 @@ import 'package:velotoulouse/ui/screens/map/view_model/map_view_model.dart';
 import 'package:velotoulouse/ui/screens/map/widgets/map_search_bar.dart';
 import 'package:velotoulouse/ui/screens/map/widgets/station_marker.dart';
 import 'package:velotoulouse/ui/screens/map/station_search_screen.dart';
+import 'package:velotoulouse/ui/screens/station_details/station_details_screen.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
 import 'package:velotoulouse/utils/async_value_state.dart';
 
@@ -65,9 +66,20 @@ class MapContent extends StatelessWidget {
                       station.location.coords.latitude,
                       station.location.coords.longitude,
                     ),
-                    child: StationMarker(
-                      station: station,
-                      availableBikes: vm.getAvailableBikes(station),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) =>
+                                StationDetailsScreen(station: station),
+                          ),
+                        );
+                      },
+                      child: StationMarker(
+                        station: station,
+                        availableBikes: vm.getAvailableBikes(station),
+                      ),
                     ),
                   );
                 }).toList(),

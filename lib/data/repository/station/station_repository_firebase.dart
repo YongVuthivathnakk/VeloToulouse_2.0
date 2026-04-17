@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:velotoulouse/data/dtos/station_dto.dart';
 import 'package:velotoulouse/data/repository/station/station_repository.dart';
 import 'package:velotoulouse/models/station.dart';
@@ -8,6 +9,9 @@ import 'package:http/http.dart' as http;
 class StationRepositoryFirebase extends StationRepository {
   static const String _baseUrl =
       'velo-toulouse-ab88a-default-rtdb.asia-southeast1.firebasedatabase.app';
+
+  final DatabaseReference _db = FirebaseDatabase.instance.ref();
+
   @override
   Future<List<Station>> getAllStation() async {
     final uri = Uri.https(_baseUrl, 'stations.json');
@@ -41,4 +45,25 @@ class StationRepositoryFirebase extends StationRepository {
       throw Exception("Error fetching station: $e");
     }
   }
+
+  @override
+  Stream<List<Station>> watchStations() {
+    final ref = _db.child('stations');
+
+    return ref.onValue.map((event) {
+      final data = event.snapshot.value;
+
+      if (data == null) return [];
+
+      final map = Map<String, dynamic>.from(data as Map);
+
+      return map.entries.map((entry) {
+        return StationDto.fromJson(
+          entry.key,
+          Map<String, dynamic>.from(entry.value),
+        );
+      }).toList();
+    });
+  }
+
 }
