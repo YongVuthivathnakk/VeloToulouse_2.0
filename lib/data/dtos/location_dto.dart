@@ -1,5 +1,5 @@
+import 'package:latlong2/latlong.dart';
 import 'package:velotoulouse/models/location.dart';
-import 'package:latlng/latlng.dart';
 
 class LocationDto {
   static const String idKey = 'id';
@@ -18,7 +18,7 @@ class LocationDto {
       id: json[idKey],
       name: json[nameKey],
       street: json[streetKey],
-      locationPosition: LatLng.degree(json[latKey], json[lngKey]),
+      coords: LatLng(json[latKey], json[lngKey]),
     );
   }
 
@@ -27,8 +27,8 @@ class LocationDto {
       idKey: location.id,
       nameKey: location.name,
       streetKey: location.street,
-      latKey: location.locationPosition.latitude.degrees,
-      lngKey: location.locationPosition.longitude.degrees,
+      latKey: location.coords.latitude,
+      lngKey: location.coords.longitude,
     };
   }
 }

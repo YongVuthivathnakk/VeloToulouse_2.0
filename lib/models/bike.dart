@@ -1,22 +1,18 @@
 class Bike {
   final String id;
-  String stationId;
-  bool availabilityStatus;
+  final bool isAvailable;
 
   Bike({
     required this.id,
-    required this.stationId,
-    this.availabilityStatus = true,
+    this.isAvailable = true,
   });
 
   Bike copyWith({
-    String? stationId, 
-    bool? availabilityStatus
+    bool? isAvailable
     }){
     return Bike(
       id: id,
-      stationId: stationId ?? this.stationId,
-      availabilityStatus: availabilityStatus ?? this.availabilityStatus,
+      isAvailable: isAvailable ?? this.isAvailable,
     );
   }
 }

@@ -1,27 +1,29 @@
-import 'package:latlng/latlng.dart';
+
+import 'package:latlong2/latlong.dart';
 
 class Location {
   final String id;
   String name;
   String street;
-  LatLng locationPosition;
+  LatLng coords;
 
   Location({
     required this.id,
     required this.name,
     required this.street,
-    required this.locationPosition,
+    required this.coords,
   });
 
   Location copyWith({
     String? name, 
     String? street, 
-    LatLng? locationPosition,
+    LatLng? coords,
   }){
     return Location(
       id: id,
       name: name ?? this.name, 
       street: street ?? this.street, 
-      locationPosition: locationPosition ?? this.locationPosition);
+      coords: coords ?? this.coords,
+    );
   }
 }

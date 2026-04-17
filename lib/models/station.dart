@@ -1,56 +1,36 @@
 import 'package:velotoulouse/models/location.dart';
+import 'package:velotoulouse/models/slot.dart';
 
 class Station {
   final String id;
   final String name;
-  final int totalSlots;
-  final Map<int, String> occupiedSlots;
-  final Location locationPosition;
+  final Location location;
+  final List<Slot> slots;
 
   Station({
     required this.id,
     required this.name,
-    required this.totalSlots,
-    required this.locationPosition,
-    Map<int, String>? occupiedSlots,
-  }) : occupiedSlots = occupiedSlots ?? {} ;
+    required this.location,
+    List<Slot>? slots,
+  }) :slots = slots ?? [];
 
-    Station copyWith({
-    String? name,
-    int? totalSlots,
-    Map<int, String>? occupiedSlots,
-    Location? locationPosition,
-  }) {
+  Station copyWith({String? name, Location? location, List<Slot>? slots}) {
     return Station(
       id: id,
       name: name ?? this.name,
-      totalSlots: totalSlots ?? this.totalSlots,
-      occupiedSlots: occupiedSlots ?? this.occupiedSlots,
-      locationPosition: locationPosition ?? this.locationPosition,
+      location: location ?? this.location,
+      slots: slots ?? this.slots,
     );
   }
 
-  int get availableSlots => totalSlots - occupiedSlots.length;
+  int get totalSlots => slots.length;
 
-  void removeBikeSlot(int slotNumber) {
-    if (slotNumber < 1 || slotNumber > totalSlots) {
-      print("Invalid slot number!");
-      return;
-    }
-    if (!occupiedSlots.containsKey(slotNumber)) {
-      print("Slot $slotNumber is already empty!");
-    }
-    occupiedSlots.remove(slotNumber);
-    print("Slot $slotNumber is now free.");
-  }
+  int get availableSlots => slots.where((slot) => slot.bikeId == null).length;
 
-  List<int> getAvailableSlot() {
-    List<int> availableSlots = [];
-    for (int i = 1; i <= totalSlots; i++) {
-      if (!occupiedSlots.containsKey(i)) {
-        availableSlots.add(i);
-      }
-    }
-    return availableSlots;
-  }
+  List<Slot> get occupiedSlots =>
+      slots.where((slot) => slot.bikeId != null).toList();
+
+  List<Slot> get emptySlots =>
+      slots.where((slot) => slot.bikeId == null).toList();
+
 }
