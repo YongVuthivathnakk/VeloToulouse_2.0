@@ -1,8 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:velotoulouse/models/pass.dart';
+import 'package:provider/provider.dart';
+import 'package:velotoulouse/models/user_subscription.dart';
+import 'package:velotoulouse/ui/screens/pass/view_model/pass_view_model.dart';
+import 'package:velotoulouse/ui/screens/pass/widgets/one_time_ticket_active_card.dart';
 import 'package:velotoulouse/ui/screens/pass/widgets/pass_card.dart';
+import 'package:velotoulouse/ui/screens/pass/widgets/payment_bottom_sheet.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
+import 'package:velotoulouse/utils/async_value_state.dart';
+
 
 class PassContent extends StatelessWidget {
   const PassContent({super.key});
@@ -10,7 +16,9 @@ class PassContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text("Pass Options", style: AppText.h2,))),
+      appBar: AppBar(
+        title: Center(child: Text("Pass Options", style: AppText.h2)),
+      ),
       body: PassCarousel(),
     );
   }
@@ -26,19 +34,71 @@ class PassCarousel extends StatefulWidget {
 class _PassCarouselState extends State<PassCarousel> {
   int _currentIndex = 0;
   final CarouselSliderController _controller = CarouselSliderController();
+  String? _lastSuccessMessage;
+
+  void _showPassSelectionBottomSheet(
+    BuildContext context,
+    PassType selectedPass,
+    PassViewModel vm,
+  ) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => PaymentBottomSheet(
+        pass: selectedPass,
+        isLoading: vm.isLoading,
+        onConfirm: () {
+          Navigator.pop(context);
+          vm.handlePassContent(selectedPass);
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    final vm = context.watch<PassViewModel>();
+    final currentPassType = vm.currentPass;
+    final isUsingOneTimeTicket = currentPassType == PassType.oneTimeTicket;
+
+    // Show snackbar on successful payment
+    if (vm.passData.state == AsyncValueState.success &&
+        vm.passData.data != null &&
+        vm.passData.data!.isNotEmpty &&
+        _lastSuccessMessage != vm.passData.data) {
+      _lastSuccessMessage = vm.passData.data;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(vm.passData.data ?? 'Success!'),
+            backgroundColor: AppColors.primaryDark,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+        // Clear the success message after showing
+        vm.clearSuccess();
+      });
+    }
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        // Show current pass info only when using one-time ticket
+        if (isUsingOneTimeTicket) OneTimeTicketActiveCard(),
         CarouselSlider.builder(
           carouselController: _controller,
-          itemCount: Pass.values.length - 1,
-          itemBuilder: (context, index, pageViewIndex) => PassCard(
-            pass: Pass.values[index + 1],
-            onChoose: () {}, 
-          ), 
+          itemCount: PassType.values.length - 1,
+          itemBuilder: (context, index, pageViewIndex) {
+            final pass = PassType.values[index + 1];
+            final isCurrentPass = currentPassType == pass;
+
+            return PassCard(
+              pass: pass,
+              isCurrentPass: isCurrentPass,
+              isLoading: vm.isLoading,
+              onChoose: () => _showPassSelectionBottomSheet(context, pass, vm),
+            );
+          },
           options: CarouselOptions(
             height: 560,
             viewportFraction: 0.88,
@@ -48,17 +108,16 @@ class _PassCarouselState extends State<PassCarousel> {
             initialPage: 0,
             onPageChanged: (index, reason) {
               setState(() => _currentIndex = index);
-            }, 
-          ), 
+            },
+          ),
         ),
         const SizedBox(height: 12),
 
         // Dot indicatior ...
-
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
-            Pass.values.length - 1,
+            PassType.values.length - 1,
             (index) => GestureDetector(
               onTap: () => _controller.animateToPage(index),
               child: AnimatedContainer(
@@ -71,12 +130,12 @@ class _PassCarouselState extends State<PassCarousel> {
                       ? AppColors.primaryDark
                       : AppColors.grey300,
                   borderRadius: BorderRadius.circular(999),
-                ), 
-              ), 
-            ), 
-          ), 
-        ), 
-      ], 
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

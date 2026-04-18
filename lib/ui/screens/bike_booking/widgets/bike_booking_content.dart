@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:velotoulouse/models/booking.dart';
 import 'package:velotoulouse/models/slot.dart';
+import 'package:velotoulouse/models/user_subscription.dart';
 import 'package:velotoulouse/ui/screens/bike_booking/view_model/bike_booking_view_model.dart';
 import 'package:velotoulouse/ui/screens/bike_booking/widgets/access_option_tile.dart';
 import 'package:velotoulouse/ui/screens/bike_booking/widgets/active_pass_card.dart';
 import 'package:velotoulouse/ui/screens/bike_booking/widgets/bike_card.dart';
 import 'package:velotoulouse/ui/screens/bike_booking/widgets/booking_info_card.dart';
+import 'package:velotoulouse/ui/screens/pass/pass_screen.dart';
+import 'package:velotoulouse/ui/screens/pass/widgets/payment_bottom_sheet.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
 import 'package:velotoulouse/ui/widgets/primary_button.dart';
 
@@ -21,6 +24,7 @@ class BikeBookingContent extends StatelessWidget {
     final station = vm.station;
     final hasActiveBooking = vm.hasActiveBooking;
     final currentBooking = vm.currentBooking;
+    final isExpired = user?.userSubscription?.isExpired ?? false;
 
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -102,6 +106,21 @@ class BikeBookingContent extends StatelessWidget {
                           }),
                     ),
                   ] else ...[
+                    if(isExpired)...[
+                      Text(
+                        'YOUR PASS HAS EXPIRED',
+                        style: AppText.label.copyWith(color: AppColors.secondaryDark),
+                      ),
+
+                      const SizedBox(height: 6),
+
+                      Text(
+                        'Please renew your subscription or get a new pass to continue riding.',
+                        style: AppText.body.copyWith(color: AppColors.grey900),
+                      ),
+
+                      const SizedBox(height: 12),
+                    ],
                     Text(
                       'ACCESS REQUIRED',
                       style: AppText.label.copyWith(color: AppColors.grey500),
@@ -113,7 +132,12 @@ class BikeBookingContent extends StatelessWidget {
                       icon: Icons.credit_card,
                       title: 'Get a pass',
                       subtitle: 'Daily, Monthly, Annual',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const PassScreen()),
+                        );
+                      },
                     ),
 
                     const SizedBox(height: 8),
@@ -122,7 +146,22 @@ class BikeBookingContent extends StatelessWidget {
                       icon: Icons.confirmation_number_outlined,
                       title: 'Get a one-time ticket',
                       subtitle: 'Single Ride - \$1.00',
-                      onTap: () => vm.buyOneTimeTicket(),
+                      onTap: (){
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (_) {
+                            return PaymentBottomSheet(
+                              pass: PassType.oneTimeTicket,
+                              isLoading: false,
+                              onConfirm: () async {
+                                Navigator.pop(context);
+                                await vm.buyOneTimeTicket();
+                              },
+                            );
+                          },
+                        );
+                      },
                     ),
                   ],
                 ],

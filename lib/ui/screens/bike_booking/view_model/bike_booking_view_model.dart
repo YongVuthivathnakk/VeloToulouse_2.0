@@ -26,7 +26,9 @@ class BikeBookingViewModel extends ChangeNotifier {
     required this.userState,
     required this.stationRepository,
     required this.bookingState,
-  });
+  }){
+    userState.addListener(notifyListeners);
+  }
 
   User? get user => userState.user;
   BookingViewData? get currentBooking => bookingState.currentBookingData;

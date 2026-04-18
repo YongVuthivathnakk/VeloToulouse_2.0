@@ -33,8 +33,4 @@ class User {
 
   bool get hasValidSubscription =>
       userSubscription != null && !userSubscription!.isExpired;
-
-  //bool get hasActiveBooking => currentBooking != null;
-
-  //bool get canBook => hasValidSubscription && !hasActiveBooking;
 }

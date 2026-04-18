@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:velotoulouse/models/pass.dart';
+import 'package:velotoulouse/models/user_subscription.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
 
 class PassCard extends StatelessWidget {
-  final Pass pass;
+  final PassType pass;
   final VoidCallback onChoose;
+  final bool isCurrentPass;
+  final bool isLoading;
 
-  const PassCard({super.key, required this.pass, required this.onChoose});
+  const PassCard({
+    super.key, 
+    required this.pass, 
+    required this.onChoose,
+    this.isCurrentPass = false,
+    this.isLoading = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +24,8 @@ class PassCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: AppRadius.mdR,
         border: Border.all(
-          color: AppColors.grey300, // blue border like the image
-          width: 1.5,
+          color: isCurrentPass ? AppColors.primaryDark : AppColors.grey300,
+          width: isCurrentPass ? 2 : 1.5,
         ),
       ),
       child: Padding(
@@ -25,15 +33,44 @@ class PassCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Title and subtitle 
-            Text(
-              pass.title,
-              style: AppText.h1,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              pass.subtitle,
-              style: const TextStyle(fontSize: 13, color: AppColors.grey500),
+            // Title, subtitle, and badge
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        pass.title,
+                        style: AppText.h1,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        pass.subtitle,
+                        style: const TextStyle(fontSize: 13, color: AppColors.grey500),
+                      ),
+                    ],
+                  ),
+                ),
+                if (isCurrentPass)
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryDark,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: const Text(
+                      'Currently Using',
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+              ],
             ),
 
             const SizedBox(height: 20),
@@ -75,7 +112,7 @@ class PassCard extends StatelessWidget {
             const SizedBox(height: 12),
 
             // Features 
-            ...pass.features.map(
+            ...pass.benefits.map(
               (feature) => Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Row(
@@ -129,20 +166,29 @@ class PassCard extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: onChoose,
+                onPressed: (isCurrentPass || isLoading) ? null : onChoose,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryDark,
-                  foregroundColor: Colors.white,
+                  backgroundColor: (isCurrentPass || isLoading) ? AppColors.grey300 : AppColors.primaryDark,
+                  foregroundColor: (isCurrentPass || isLoading) ? AppColors.grey500 : Colors.white,
                   elevation: 0,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text(
-                  'Choose Plan',
-                  style: AppText.button,
-                ),
+                child: isLoading
+                    ? const SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          valueColor: AlwaysStoppedAnimation<Color>(AppColors.primaryDark),
+                        ),
+                      )
+                    : const Text(
+                        'Choose Plan',
+                        style: AppText.button,
+                      ),
               ),
             ),
           ],

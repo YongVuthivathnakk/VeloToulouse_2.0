@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
 
 class AccessOptionTile extends StatelessWidget {

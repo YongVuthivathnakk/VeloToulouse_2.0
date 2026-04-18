@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:velotoulouse/models/user_subscription.dart';
 import 'package:velotoulouse/ui/themes/theme.dart';
 
