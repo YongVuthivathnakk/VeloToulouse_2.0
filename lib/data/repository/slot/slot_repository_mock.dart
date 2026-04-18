@@ -1,7 +1,6 @@
 import 'package:velotoulouse/data/mockdata.dart';
 import 'package:velotoulouse/data/repository/slot/slot_repository.dart';
 import 'package:velotoulouse/models/slot.dart';
-import 'package:velotoulouse/models/station.dart';
 
 class SlotRepositoryMock implements SlotRepository {
   final MockData mockData;

@@ -30,7 +30,7 @@ class BookingRepositoryFirebase implements BookingRepository {
   }
 
   @override
-  Future<Booking> createBooking(String userId, Booking booking) async {
+  Future<Booking?> createBooking(String userId, Booking booking) async {
     final ref = _db.child('bookings/$userId');
 
     final newRef = ref.push();

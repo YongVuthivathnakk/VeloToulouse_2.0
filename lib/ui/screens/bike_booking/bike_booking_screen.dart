@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:velotoulouse/data/repository/bike/bike_repository.dart';
 import 'package:velotoulouse/data/repository/station/station_repository.dart';
 import 'package:velotoulouse/models/slot.dart';
 import 'package:velotoulouse/service/booking/booking_service.dart';
@@ -21,7 +22,7 @@ class BikeBookingScreen extends StatelessWidget {
         subscriptionService: context.read<SubscriptionService>(), 
         userState: context.read<UserState>(),
         stationRepository: context.read<StationRepository>(),
-        bookingState: context.read<BookingState>()
+        bookingState: context.read<BookingState>(), 
       )..init(slot),
       child: BikeBookingContent(slot: slot),
     );

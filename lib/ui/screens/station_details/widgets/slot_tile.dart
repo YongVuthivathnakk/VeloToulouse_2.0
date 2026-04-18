@@ -5,19 +5,21 @@ import 'package:velotoulouse/ui/themes/theme.dart';
 class SlotTile extends StatelessWidget {
   final int slotNumber;
   final bool isOccupied;
+  final String statusLabel;
   final VoidCallback? onTap;
 
   const SlotTile({
     super.key,
     required this.slotNumber,
     required this.isOccupied,
+    required this.statusLabel,
     this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: isOccupied ? onTap : null,
+      onTap: statusLabel == "Available" ? onTap : null,
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
         padding: const EdgeInsets.all(12),
@@ -40,7 +42,9 @@ class SlotTile extends StatelessWidget {
                 color: isOccupied ? AppColors.primary : AppColors.grey500,
               ),
             ),
+
             const SizedBox(width: 12),
+
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,19 +54,26 @@ class SlotTile extends StatelessWidget {
                     style: AppText.body.copyWith(fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    isOccupied ? "Bike" : "Empty Dock",
+                    statusLabel == "Empty" ? "Empty Dock" : "Bike",
                     style: AppText.caption.copyWith(color: AppColors.grey500),
                   ),
                 ],
               ),
             ),
+
             StatusBadge(
-              label: isOccupied ? "Available" : "Empty",
+              label: statusLabel,
               dotIndicator: false,
-              backgroundColor: isOccupied
+              backgroundColor: statusLabel == "Available"
                   ? AppColors.primaryLight
-                  : AppColors.grey50,
-              textColor: isOccupied ? AppColors.primaryDark : AppColors.grey500,
+                  : statusLabel == "Booked"
+                    ? AppColors.secondaryLight
+                    : AppColors.grey50,
+              textColor: statusLabel == "Available"
+                  ? AppColors.primaryDark
+                  : statusLabel == "Booked"
+                    ? AppColors.secondaryDark
+                    : AppColors.grey300
             ),
           ],
         ),

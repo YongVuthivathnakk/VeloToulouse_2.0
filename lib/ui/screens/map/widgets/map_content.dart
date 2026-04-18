@@ -73,7 +73,7 @@ class MapContent extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (_) =>
-                                StationDetailsScreen(station: station),
+                                StationDetailsScreen(stationId: station.id),
                           ),
                         );
                       },

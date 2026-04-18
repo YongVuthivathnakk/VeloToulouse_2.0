@@ -96,7 +96,10 @@ class BikeBookingContent extends StatelessWidget {
 
                     PrimaryButton(
                       label: 'Confirm booking',
-                      onPressed: () => vm.bookBike(BookingType.pass, slot),
+                      onPressed: () =>
+                          vm.bookBike(BookingType.pass, slot).then((_) {
+                            print("bookBike success");
+                          }),
                     ),
                   ] else ...[
                     Text(

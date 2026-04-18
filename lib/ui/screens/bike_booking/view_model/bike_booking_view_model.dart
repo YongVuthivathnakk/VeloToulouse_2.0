@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:velotoulouse/data/repository/bike/bike_repository.dart';
 import 'package:velotoulouse/data/repository/station/station_repository.dart';
 import 'package:velotoulouse/models/booking.dart';
 import 'package:velotoulouse/models/booking_view_data.dart';
@@ -22,8 +23,8 @@ class BikeBookingViewModel extends ChangeNotifier {
   BikeBookingViewModel({
     required this.bookingService,
     required this.subscriptionService,
-    required this.userState, 
-    required this.stationRepository, 
+    required this.userState,
+    required this.stationRepository,
     required this.bookingState,
   });
 
@@ -36,6 +37,7 @@ class BikeBookingViewModel extends ChangeNotifier {
 
   Future<void> init(Slot slot) async {
     _station = await stationRepository.getStation(slot.stationId);
+
     notifyListeners();
   }
 
